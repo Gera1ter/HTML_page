@@ -1,63 +1,19 @@
-```html
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="ru">
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>GERALTER // DIGITAL SPACE</title>
 
-    <title>GERALTER // DIGITAL WORLD</title>
-
-    <meta
-        name="description"
-        content="GERALTER — Developer • Student • Tech Enthusiast"
-    >
+    <meta name="description"
+          content="Geralter — Developer • Student • Tech Enthusiast">
 
     <style>
 
-        @import url(
-            'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap'
-        );
-
-
-        /* =====================================================
-           VARIABLES
-        ===================================================== */
-
-        :root {
-
-            --bg: #050507;
-            --bg2: #09090e;
-
-            --card: rgba(13, 13, 20, 0.78);
-
-            --text: #f4f4f6;
-            --muted: #8b8b96;
-            --dim: #555560;
-
-            --border: rgba(255,255,255,0.08);
-
-            --cyan: #4ECDC4;
-            --purple: #9B59B6;
-
-            --gradient:
-                linear-gradient(
-                    110deg,
-                    #4ECDC4,
-                    #9B59B6
-                );
-
-        }
-
-
-        /* =====================================================
+        /* =========================================================
            RESET
-        ===================================================== */
+        ========================================================= */
 
         * {
             margin: 0;
@@ -65,265 +21,422 @@
             box-sizing: border-box;
         }
 
-
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-
             min-height: 100vh;
-
             background:
+                radial-gradient(circle at 20% 20%, rgba(78, 205, 196, 0.08), transparent 30%),
+                radial-gradient(circle at 80% 70%, rgba(155, 89, 182, 0.08), transparent 30%),
+                #050509;
 
-                radial-gradient(
-                    circle at 10% 0%,
-                    rgba(78,205,196,0.07),
-                    transparent 28%
-                ),
-
-                radial-gradient(
-                    circle at 90% 15%,
-                    rgba(155,89,182,0.08),
-                    transparent 30%
-                ),
-
-                var(--bg);
-
-            color: var(--text);
-
-            font-family:
-                'JetBrains Mono',
-                monospace;
+            color: #f4f4f4;
+            font-family: "Courier New", monospace;
 
             overflow-x: hidden;
-
         }
 
-
-        /* =====================================================
-           GRID
-        ===================================================== */
-
         body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
 
+            background:
+                linear-gradient(
+                    rgba(255,255,255,0.015) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.015) 1px,
+                    transparent 1px
+                );
+
+            background-size: 40px 40px;
+
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        body::after {
             content: "";
 
             position: fixed;
-
             inset: 0;
 
-            background-image:
-
-                linear-gradient(
-                    rgba(255,255,255,0.012) 1px,
-                    transparent 1px
-                ),
-
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,0.012) 1px,
-                    transparent 1px
+            background:
+                radial-gradient(
+                    circle at center,
+                    transparent 40%,
+                    rgba(0,0,0,0.55)
                 );
-
-            background-size: 42px 42px;
 
             pointer-events: none;
-
-            z-index: -2;
-
+            z-index: -1;
         }
 
 
-        /* =====================================================
-           MAIN
-        ===================================================== */
+        /* =========================================================
+           COLORS
+        ========================================================= */
 
-        .container {
+        :root {
+            --cyan: #4ECDC4;
+            --purple: #9B59B6;
 
-            width:
-                min(
-                    1000px,
-                    calc(100% - 30px)
+            --gradient:
+                linear-gradient(
+                    90deg,
+                    #4ECDC4,
+                    #9B59B6
                 );
 
-            margin: auto;
+            --bg: #050509;
+            --panel: rgba(10, 10, 17, 0.94);
 
+            --border:
+                rgba(78, 205, 196, 0.35);
         }
 
 
-        /* =====================================================
-           NAVBAR
-        ===================================================== */
+        /* =========================================================
+           SCROLLBAR
+        ========================================================= */
 
-        nav {
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050509;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(
+                #4ECDC4,
+                #9B59B6
+            );
+
+            border-radius: 10px;
+        }
+
+
+        /* =========================================================
+           SIDE MENU BUTTON
+        ========================================================= */
+
+        .menu-trigger {
 
             position: fixed;
 
-            top: 18px;
+            left: 20px;
+            top: 50%;
 
-            left: 50%;
+            transform: translateY(-50%);
+
+            width: 48px;
+            height: 48px;
+
+            border: 1px solid var(--border);
+
+            background: rgba(8, 8, 14, 0.9);
+
+            color: var(--cyan);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            font-size: 22px;
+
+            z-index: 5000;
+
+            transition: 0.25s;
+
+            box-shadow:
+                0 0 20px rgba(78,205,196,0.08);
+        }
+
+        .menu-trigger:hover {
 
             transform:
-                translateX(-50%);
+                translateY(-50%)
+                translateX(4px);
 
-            width:
-                min(
-                    1000px,
-                    calc(100% - 30px)
-                );
+            border-color: var(--cyan);
 
-            padding:
-                12px 16px;
+            box-shadow:
+                0 0 25px rgba(78,205,196,0.3);
+
+            color: white;
+        }
+
+
+        /* =========================================================
+           NAVIGATOR
+        ========================================================= */
+
+        .navigator {
+
+            position: fixed;
+
+            left: 20px;
+            top: 50%;
+
+            transform:
+                translate(-120%, -50%);
+
+            width: 270px;
+
+            background:
+                rgba(6, 6, 12, 0.97);
+
+            border:
+                1px solid rgba(78,205,196,0.4);
+
+            box-shadow:
+                0 0 40px rgba(78,205,196,0.12),
+                0 0 80px rgba(155,89,182,0.08);
+
+            backdrop-filter: blur(18px);
+
+            z-index: 4999;
+
+            transition:
+                transform 0.35s ease;
+        }
+
+        .navigator.active {
+
+            transform:
+                translate(0, -50%);
+        }
+
+        .navigator-header {
+
+            padding: 14px 16px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
 
             display: flex;
 
             align-items: center;
 
             justify-content: space-between;
-
-            background:
-                rgba(7,7,11,0.78);
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 12px;
-
-            backdrop-filter:
-                blur(18px);
-
-            z-index: 1000;
-
         }
 
-
-        .nav-logo {
-
-            color: white;
-
-            text-decoration: none;
-
-            font-weight: 700;
+        .navigator-title {
 
             font-size: 13px;
 
+            color: var(--cyan);
+
+            letter-spacing: 1px;
         }
 
+        .navigator-status {
 
-        .nav-logo span {
+            font-size: 10px;
 
-            background:
-                var(--gradient);
-
-            -webkit-background-clip: text;
-            background-clip: text;
-
-            color: transparent;
-
-        }
-
-
-        .nav-links {
-
-            display: flex;
-
-            gap: 18px;
+            color: #777;
 
         }
 
-
-        .nav-links button {
-
-            background: none;
-
-            border: none;
-
-            color: var(--muted);
-
-            font-family: inherit;
-
-            font-size: 9px;
-
-            cursor: pointer;
-
-            transition: 0.25s;
-
-        }
-
-
-        .nav-links button:hover {
-
-            color: white;
-
-        }
-
-
-        /* =====================================================
-           HERO
-        ===================================================== */
-
-        .hero {
-
-            min-height: 100vh;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            padding:
-                120px 0 80px;
-
-        }
-
-
-        .terminal {
-
-            color: var(--dim);
-
-            font-size: 11px;
-
-            margin-bottom: 22px;
-
-        }
-
-
-        .terminal .green {
+        .navigator-status span {
 
             color: var(--cyan);
 
+            text-shadow:
+                0 0 8px var(--cyan);
         }
 
 
-        .terminal .purple {
+        /* =========================================================
+           NAV ITEMS
+        ========================================================= */
 
-            color: var(--purple);
+        .nav-items {
 
+            padding: 10px;
         }
 
+        .nav-item {
 
-        .logo {
+            width: 100%;
 
-            font-size:
-                clamp(
-                    55px,
-                    12vw,
-                    105px
-                );
+            border: none;
 
-            line-height: 0.9;
+            background: transparent;
 
-            letter-spacing: -5px;
+            color: #888;
 
-            font-weight: 700;
+            padding: 13px 14px;
+
+            margin-bottom: 3px;
+
+            text-align: left;
+
+            font-family: inherit;
+
+            cursor: pointer;
+
+            font-size: 12px;
+
+            letter-spacing: 0.5px;
+
+            position: relative;
+
+            transition: 0.2s;
+        }
+
+        .nav-item::before {
+
+            content: ">";
+
+            position: absolute;
+
+            left: 4px;
+
+            opacity: 0;
+
+            color: var(--cyan);
+
+            transition: 0.2s;
+        }
+
+        .nav-item:hover {
+
+            color: white;
 
             background:
-                var(--gradient);
+                rgba(78,205,196,0.06);
+
+            padding-left: 22px;
+        }
+
+        .nav-item:hover::before {
+
+            opacity: 1;
+        }
+
+        .nav-item.active {
+
+            color: var(--cyan);
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(78,205,196,0.12),
+                    transparent
+                );
+
+            box-shadow:
+                inset 2px 0 var(--cyan);
+        }
+
+
+        /* =========================================================
+           NAV FOOTER
+        ========================================================= */
+
+        .navigator-footer {
+
+            border-top:
+                1px solid rgba(255,255,255,0.08);
+
+            padding: 12px;
+
+            color: #555;
+
+            font-size: 9px;
+
+            text-align: center;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================================================
+           MAIN
+        ========================================================= */
+
+        main {
+
+            width: min(1100px, calc(100% - 60px));
+
+            margin: auto;
+
+            padding:
+                80px 0 180px;
+        }
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+
+            min-height: 80vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            text-align: center;
+        }
+
+        .terminal {
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+
+            color: #777;
+        }
+
+        .terminal .prompt {
+
+            color: var(--cyan);
+
+            text-shadow:
+                0 0 10px rgba(78,205,196,0.5);
+        }
+
+        .terminal .command {
+
+            color: #ddd;
+        }
+
+        .hero h1 {
+
+            font-family:
+                Arial,
+                sans-serif;
+
+            font-size:
+                clamp(55px, 11vw, 130px);
+
+            font-weight: 900;
+
+            letter-spacing:
+                8px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #4ECDC4,
+                    #9B59B6
+                );
 
             -webkit-background-clip: text;
             background-clip: text;
@@ -333,1155 +446,1383 @@
             filter:
                 drop-shadow(
                     0 0 25px
-                    rgba(78,205,196,0.10)
+                    rgba(78,205,196,0.2)
                 );
-
         }
 
+        .hero-subtitle {
 
-        .subtitle {
+            margin-top: 20px;
 
-            margin-top: 22px;
+            font-size: 13px;
 
-            color: var(--muted);
+            letter-spacing: 4px;
 
-            font-size: 11px;
-
-            letter-spacing: 1px;
-
+            color: #aaa;
         }
 
+        .hero-description {
 
-        .description {
+            max-width: 650px;
 
-            max-width: 600px;
+            margin-top: 25px;
 
-            margin:
-                18px auto 0;
-
-            color: var(--muted);
-
-            font-size: 10px;
+            color: #666;
 
             line-height: 1.8;
 
+            font-size: 13px;
         }
 
 
-        /* =====================================================
-           HERO BUTTONS
-        ===================================================== */
+        /* =========================================================
+           HERO BUTTON
+        ========================================================= */
 
-        .hero-buttons {
+        .start-button {
 
-            display: flex;
+            margin-top: 40px;
 
-            justify-content: center;
-
-            flex-wrap: wrap;
-
-            gap: 10px;
-
-            margin-top: 30px;
-
-        }
-
-
-        .hero-button {
-
-            padding:
-                10px 15px;
+            padding: 13px 25px;
 
             border:
-                1px solid var(--border);
-
-            border-radius: 7px;
+                1px solid var(--cyan);
 
             background:
-                rgba(255,255,255,0.02);
+                rgba(78,205,196,0.05);
 
-            color: var(--muted);
+            color: var(--cyan);
 
             font-family: inherit;
 
-            font-size: 9px;
+            cursor: pointer;
+
+            transition: 0.25s;
+
+            letter-spacing: 1px;
+        }
+
+        .start-button:hover {
+
+            background:
+                rgba(78,205,196,0.15);
+
+            color: white;
+
+            box-shadow:
+                0 0 30px rgba(78,205,196,0.2);
+        }
+
+
+        /* =========================================================
+           DESKTOP
+        ========================================================= */
+
+        .desktop {
+
+            margin-top: 30px;
+        }
+
+        .desktop-label {
+
+            color: #444;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 20px;
+        }
+
+        .desktop-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 14px;
+        }
+
+        .desktop-icon {
+
+            min-height: 145px;
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            background:
+                rgba(10,10,16,0.65);
+
+            padding: 25px 20px;
 
             cursor: pointer;
 
             transition:
                 0.25s;
 
+            position: relative;
         }
 
-
-        .hero-button:hover {
-
-            color: white;
-
-            border-color:
-                rgba(78,205,196,0.3);
-
-            box-shadow:
-                0 0 25px
-                rgba(78,205,196,0.08);
+        .desktop-icon:hover {
 
             transform:
-                translateY(-2px);
+                translateY(-5px);
 
+            border-color:
+                rgba(78,205,196,0.5);
+
+            background:
+                rgba(78,205,196,0.04);
+
+            box-shadow:
+                0 10px 40px
+                rgba(78,205,196,0.08);
+        }
+
+        .desktop-icon .icon {
+
+            font-size: 28px;
+
+            margin-bottom: 15px;
+
+            display: block;
+        }
+
+        .desktop-icon h3 {
+
+            font-size: 12px;
+
+            color: #ddd;
+
+            letter-spacing: 1px;
+        }
+
+        .desktop-icon p {
+
+            margin-top: 8px;
+
+            color: #555;
+
+            font-size: 10px;
+
+            line-height: 1.5;
         }
 
 
-        /* =====================================================
-           SECTION
-        ===================================================== */
+        /* =========================================================
+           SECTIONS
+        ========================================================= */
 
-        section {
+        .section {
 
-            padding:
-                70px 0;
+            margin-top: 120px;
 
+            scroll-margin-top: 30px;
         }
-
 
         .section-title {
+
+            font-size: 14px;
+
+            color: var(--cyan);
+
+            letter-spacing: 2px;
+
+            margin-bottom: 25px;
+        }
+
+        .section-title span {
+
+            color: #444;
+
+            margin-left: 10px;
+        }
+
+
+        /* =========================================================
+           CARDS
+        ========================================================= */
+
+        .cards {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+        }
+
+        .card {
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+
+            padding: 22px;
+
+            background:
+                rgba(10,10,15,0.55);
+
+            min-height: 130px;
+        }
+
+        .card strong {
+
+            display: block;
+
+            color: var(--cyan);
+
+            font-size: 12px;
+
+            margin-bottom: 12px;
+        }
+
+        .card p {
+
+            color: #666;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+
+            margin-top: 140px;
+
+            text-align: center;
+
+            color: #333;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            line-height: 2;
+        }
+
+        footer .gradient {
+
+            background:
+                var(--gradient);
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+        }
+
+
+        /* =========================================================
+           MODAL WINDOWS
+        ========================================================= */
+
+        .window {
+
+            position: fixed;
+
+            width: 650px;
+
+            max-width:
+                calc(100vw - 40px);
+
+            max-height:
+                calc(100vh - 80px);
+
+            left: 50%;
+            top: 50%;
+
+            transform:
+                translate(-50%, -50%)
+                scale(0.92);
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            background:
+                rgba(7,7,12,0.97);
+
+            border:
+                1px solid rgba(78,205,196,0.4);
+
+            box-shadow:
+                0 0 50px rgba(0,0,0,0.7),
+                0 0 40px rgba(78,205,196,0.08);
+
+            z-index: 3000;
+
+            transition:
+                opacity 0.2s,
+                transform 0.2s;
+
+            overflow: hidden;
+        }
+
+        .window.open {
+
+            opacity: 1;
+
+            pointer-events: auto;
+
+            transform:
+                translate(-50%, -50%)
+                scale(1);
+        }
+
+        .window.maximized {
+
+            width:
+                calc(100vw - 80px);
+
+            height:
+                calc(100vh - 100px);
+
+            max-width: none;
+
+            max-height: none;
+        }
+
+
+        /* =========================================================
+           WINDOW HEADER
+        ========================================================= */
+
+        .window-header {
+
+            height: 42px;
+
+            padding:
+                0 12px;
 
             display: flex;
 
             align-items: center;
 
-            gap: 10px;
+            gap: 7px;
 
-            margin-bottom: 25px;
-
-        }
-
-
-        .section-title h2 {
-
-            font-size: 14px;
-
-            font-weight: 600;
-
-        }
-
-
-        .section-title span {
-
-            color: var(--dim);
-
-            font-size: 9px;
-
-        }
-
-
-        /* =====================================================
-           WINDOWS
-        ===================================================== */
-
-        .windows {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 14px;
-
-        }
-
-
-        .window-button {
-
-            position: relative;
-
-            min-height: 150px;
-
-            padding: 24px;
-
-            text-align: left;
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
 
             background:
-                var(--card);
+                rgba(255,255,255,0.025);
 
-            border:
-                1px solid var(--border);
+            cursor: move;
 
-            border-radius: 12px;
+            user-select: none;
+        }
 
-            color: white;
+        .window-dot {
 
-            font-family: inherit;
+            width: 11px;
+            height: 11px;
+
+            border-radius: 50%;
 
             cursor: pointer;
+        }
 
-            overflow: hidden;
+        .dot-red {
 
-            transition:
-                0.3s ease;
+            background: #ff5f57;
 
+            box-shadow:
+                0 0 10px
+                rgba(255,95,87,0.3);
+        }
+
+        .dot-yellow {
+
+            background: #febc2e;
+
+            box-shadow:
+                0 0 10px
+                rgba(254,188,46,0.3);
+        }
+
+        .dot-green {
+
+            background: #28c840;
+
+            box-shadow:
+                0 0 10px
+                rgba(40,200,64,0.3);
+        }
+
+        .window-title {
+
+            margin-left: 8px;
+
+            color: #777;
+
+            font-size: 11px;
+
+            letter-spacing: 1px;
         }
 
 
-        .window-button::before {
+        /* =========================================================
+           WINDOW CONTENT
+        ========================================================= */
 
-            content: "";
+        .window-content {
 
-            position: absolute;
+            padding: 30px;
 
-            top: 0;
+            overflow-y: auto;
 
-            left: 0;
+            max-height:
+                calc(100vh - 125px);
+        }
 
-            width: 100%;
+        .window.maximized .window-content {
 
-            height: 1px;
+            max-height:
+                calc(100vh - 145px);
+        }
+
+        .window-content h2 {
+
+            font-size: 25px;
+
+            margin-bottom: 12px;
 
             background:
                 var(--gradient);
 
-            opacity: 0.5;
+            -webkit-background-clip: text;
+            background-clip: text;
 
+            color: transparent;
         }
 
+        .window-content .command-line {
 
-        .window-button:hover {
+            color: #555;
 
-            transform:
-                translateY(-5px);
+            font-size: 11px;
 
-            background:
-                rgba(18,18,26,0.9);
-
-            border-color:
-                rgba(78,205,196,0.2);
-
-            box-shadow:
-                0 15px 45px
-                rgba(0,0,0,0.25),
-
-                0 0 30px
-                rgba(78,205,196,0.05);
-
+            margin-bottom: 25px;
         }
 
+        .window-content .command-line span {
 
-        .window-icon {
-
-            font-size: 25px;
-
-            margin-bottom: 16px;
-
+            color: var(--cyan);
         }
 
+        .window-content p {
 
-        .window-name {
+            color: #999;
 
             font-size: 12px;
 
-            font-weight: 600;
+            line-height: 1.8;
 
+            margin-bottom: 18px;
         }
 
 
-        .window-description {
+        /* =========================================================
+           WINDOW LIST
+        ========================================================= */
 
-            margin-top: 8px;
+        .window-list {
 
-            color: var(--muted);
+            list-style: none;
 
-            font-size: 9px;
+            margin-top: 20px;
+        }
 
-            line-height: 1.7;
+        .window-list li {
 
+            padding: 13px;
+
+            margin-bottom: 7px;
+
+            background:
+                rgba(255,255,255,0.025);
+
+            border-left:
+                2px solid var(--cyan);
+
+            color: #aaa;
+
+            font-size: 11px;
+
+            transition: 0.2s;
+        }
+
+        .window-list li:hover {
+
+            background:
+                rgba(78,205,196,0.06);
+
+            color: white;
+
+            transform:
+                translateX(4px);
         }
 
 
-        .window-arrow {
+        /* =========================================================
+           PROJECT LINKS
+        ========================================================= */
 
-            position: absolute;
+        .project-link {
 
-            right: 20px;
+            display: block;
 
-            bottom: 18px;
+            padding: 18px;
+
+            margin-bottom: 10px;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+
+            text-decoration: none;
+
+            color: #aaa;
+
+            transition: 0.2s;
+        }
+
+        .project-link:hover {
+
+            border-color:
+                var(--cyan);
+
+            color: white;
+
+            background:
+                rgba(78,205,196,0.05);
+        }
+
+        .project-link strong {
 
             color: var(--cyan);
 
-            font-size: 13px;
+            display: block;
 
+            margin-bottom: 7px;
         }
 
 
-        /* =====================================================
-           MODAL
-        ===================================================== */
+        /* =========================================================
+           WINDOW OVERLAY
+        ========================================================= */
 
-        .modal {
+        .window-overlay {
 
             position: fixed;
 
             inset: 0;
 
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 20px;
-
             background:
-                rgba(0,0,0,0.72);
+                rgba(0,0,0,0.45);
 
             backdrop-filter:
-                blur(8px);
+                blur(2px);
 
             opacity: 0;
 
-            visibility: hidden;
-
             pointer-events: none;
 
+            z-index: 2500;
+
             transition:
-                0.25s ease;
-
-            z-index: 2000;
-
+                opacity 0.25s;
         }
 
-
-        .modal.active {
+        .window-overlay.active {
 
             opacity: 1;
 
-            visibility: visible;
-
             pointer-events: auto;
-
         }
 
 
-        .modal-window {
+        /* =========================================================
+           DOCK
+        ========================================================= */
 
-            width:
-                min(
-                    720px,
-                    100%
-                );
+        .dock {
 
-            max-height:
-                85vh;
+            position: fixed;
 
-            overflow-y: auto;
+            left: 50%;
 
-            background:
-                #09090e;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 14px;
-
-            box-shadow:
-
-                0 30px 100px
-                rgba(0,0,0,0.65),
-
-                0 0 45px
-                rgba(78,205,196,0.06);
+            bottom: 18px;
 
             transform:
-                scale(0.92)
-                translateY(20px);
-
-            transition:
-                0.3s ease;
-
-        }
-
-
-        .modal.active
-        .modal-window {
-
-            transform:
-                scale(1)
-                translateY(0);
-
-        }
-
-
-        /* =====================================================
-           MODAL HEADER
-        ===================================================== */
-
-        .modal-header {
-
-            height: 48px;
-
-            padding:
-                0 15px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            border-bottom:
-                1px solid var(--border);
-
-            background:
-                rgba(255,255,255,0.015);
-
-        }
-
-
-        .modal-title {
-
-            color: var(--muted);
-
-            font-size: 10px;
-
-        }
-
-
-        .modal-controls {
+                translateX(-50%)
+                translateY(120px);
 
             display: flex;
 
             gap: 7px;
 
+            padding: 8px;
+
+            background:
+                rgba(7,7,12,0.9);
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            backdrop-filter:
+                blur(15px);
+
+            z-index: 6000;
+
+            transition:
+                transform 0.3s;
         }
 
+        .dock.active {
 
-        .control {
+            transform:
+                translateX(-50%)
+                translateY(0);
+        }
 
-            width: 9px;
-
-            height: 9px;
-
-            border-radius: 50%;
+        .dock-item {
 
             border: none;
 
+            background:
+                rgba(255,255,255,0.04);
+
+            color: #888;
+
+            padding:
+                10px 15px;
+
+            font-family: inherit;
+
+            font-size: 10px;
+
             cursor: pointer;
 
+            transition: 0.2s;
         }
 
-
-        .control-close {
-
-            background:
-                #ff5f57;
-
-        }
-
-
-        .modal-body {
-
-            padding:
-                30px;
-
-        }
-
-
-        .modal-body h2 {
-
-            font-size: 20px;
-
-            margin-bottom: 20px;
-
-            background:
-                var(--gradient);
-
-            -webkit-background-clip: text;
-            background-clip: text;
-
-            color: transparent;
-
-        }
-
-
-        .modal-body p {
-
-            color: var(--muted);
-
-            font-size: 10px;
-
-            line-height: 2;
-
-        }
-
-
-        /* =====================================================
-           MODAL CONTENT
-        ===================================================== */
-
-        .info-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 10px;
-
-            margin-top: 20px;
-
-        }
-
-
-        .info-card {
-
-            padding: 16px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 8px;
-
-            background:
-                rgba(255,255,255,0.015);
-
-        }
-
-
-        .info-card strong {
-
-            display: block;
+        .dock-item:hover {
 
             color: white;
 
-            font-size: 10px;
-
-            margin-bottom: 7px;
-
-        }
-
-
-        .info-card span {
-
-            color: var(--muted);
-
-            font-size: 9px;
-
-            line-height: 1.7;
-
-        }
-
-
-        /* =====================================================
-           TECH
-        ===================================================== */
-
-        .tech-list {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 8px;
-
-            margin-top: 20px;
-
-        }
-
-
-        .tech {
-
-            padding:
-                7px 10px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 6px;
-
-            color: var(--muted);
-
-            font-size: 9px;
-
             background:
-                rgba(255,255,255,0.015);
-
-        }
-
-
-        /* =====================================================
-           ARCADE
-        ===================================================== */
-
-        .arcade {
-
-            position: relative;
-
-            min-height: 270px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            text-align: center;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 12px;
-
-            overflow: hidden;
-
-            background:
-
-                radial-gradient(
-                    circle at center,
-                    rgba(78,205,196,0.06),
-                    transparent 45%
-                ),
-
-                #07070b;
-
-        }
-
-
-        .arcade::before {
-
-            content: "";
-
-            position: absolute;
-
-            inset: 0;
-
-            background-image:
-
-                linear-gradient(
-                    rgba(78,205,196,0.12) 1px,
-                    transparent 1px
-                ),
-
-                linear-gradient(
-                    90deg,
-                    rgba(155,89,182,0.12) 1px,
-                    transparent 1px
-                );
-
-            background-size:
-                35px 35px;
-
-            opacity: 0.4;
-
-        }
-
-
-        .arcade-content {
-
-            position: relative;
-
-            z-index: 2;
-
-        }
-
-
-        .arcade-title {
-
-            font-size:
-                clamp(
-                    28px,
-                    7vw,
-                    50px
-                );
-
-            font-weight: 700;
-
-            letter-spacing: 3px;
-
-            background:
-                var(--gradient);
-
-            -webkit-background-clip: text;
-            background-clip: text;
-
-            color: transparent;
-
-        }
-
-
-        .arcade-subtitle {
-
-            color: var(--muted);
-
-            font-size: 9px;
-
-            margin-top: 10px;
-
-        }
-
-
-        .arcade-button {
-
-            margin-top: 20px;
-
-            display: inline-block;
-
-            padding:
-                9px 14px;
-
-            border:
-                1px solid
-                rgba(78,205,196,0.25);
-
-            border-radius: 6px;
-
-            color: var(--cyan);
-
-            text-decoration: none;
-
-            font-size: 9px;
-
-            transition: 0.25s;
-
-        }
-
-
-        .arcade-button:hover {
-
-            color: white;
-
-            border-color:
-                var(--cyan);
-
-            box-shadow:
-                0 0 25px
                 rgba(78,205,196,0.1);
-
         }
 
 
-        /* =====================================================
-           PROJECTS
-        ===================================================== */
-
-        .projects {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(2, 1fr);
-
-            gap: 12px;
-
-        }
-
-
-        .project {
-
-            padding: 20px;
-
-            border:
-                1px solid var(--border);
-
-            border-radius: 10px;
-
-            background:
-                var(--card);
-
-            text-decoration: none;
-
-            color: white;
-
-            transition: 0.25s;
-
-        }
-
-
-        .project:hover {
-
-            transform:
-                translateY(-3px);
-
-            border-color:
-                rgba(155,89,182,0.25);
-
-        }
-
-
-        .project-icon {
-
-            font-size: 23px;
-
-            margin-bottom: 12px;
-
-        }
-
-
-        .project-name {
-
-            font-size: 11px;
-
-        }
-
-
-        .project-description {
-
-            margin-top: 7px;
-
-            color: var(--muted);
-
-            font-size: 9px;
-
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-
-            text-align: center;
-
-            padding:
-                60px 0 30px;
-
-            color: var(--dim);
-
-            font-size: 8px;
-
-        }
-
-
-        footer span {
-
-            background:
-                var(--gradient);
-
-            -webkit-background-clip: text;
-            background-clip: text;
-
-            color: transparent;
-
-        }
-
-
-        /* =====================================================
+        /* =========================================================
            MOBILE
-        ===================================================== */
+        ========================================================= */
 
-        @media (max-width: 700px) {
+        @media (max-width: 800px) {
 
-            .nav-links {
+            main {
 
-                display: none;
+                width:
+                    calc(100% - 30px);
 
+                padding-top: 60px;
             }
 
+            .desktop-grid {
 
-            .windows {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .cards {
 
                 grid-template-columns:
                     1fr;
-
             }
 
+            .navigator {
 
-            .projects {
+                left: 10px;
 
-                grid-template-columns:
-                    1fr;
-
+                width:
+                    calc(100% - 20px);
             }
 
+            .menu-trigger {
 
-            .info-grid {
-
-                grid-template-columns:
-                    1fr;
-
+                left: 10px;
             }
 
+            .window {
 
-            .modal-body {
+                width:
+                    calc(100vw - 20px);
 
-                padding: 22px;
-
-            }
-
-
-            .modal-window {
+                max-width:
+                    calc(100vw - 20px);
 
                 max-height:
-                    90vh;
-
+                    calc(100vh - 30px);
             }
 
+            .window.maximized {
+
+                width:
+                    calc(100vw - 20px);
+
+                height:
+                    calc(100vh - 30px);
+            }
+
+            .hero h1 {
+
+                letter-spacing:
+                    3px;
+            }
+
+            .hero-subtitle {
+
+                letter-spacing:
+                    2px;
+
+                font-size:
+                    10px;
+            }
+
+            .window-content {
+
+                padding:
+                    20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .desktop-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .hero {
+
+                min-height:
+                    70vh;
+            }
+
+            .dock {
+
+                max-width:
+                    calc(100vw - 20px);
+
+                overflow-x:
+                    auto;
+            }
         }
 
     </style>
-
 </head>
 
 
 <body>
 
 
-    <!-- =====================================================
-         NAVIGATION
-    ===================================================== -->
+    <!-- =========================================================
+         MENU BUTTON
+    ========================================================== -->
 
-    <nav>
+    <button
+        class="menu-trigger"
+        onclick="toggleNavigator()"
+        aria-label="Open navigation">
 
-        <a
-            href="#"
-            class="nav-logo"
-        >
-            <span>GERALTER</span>
-        </a>
+        ☰
+
+    </button>
 
 
-        <div class="nav-links">
+    <!-- =========================================================
+         NAVIGATOR
+    ========================================================== -->
 
-            <button onclick="openModal('about')">
-                ABOUT
+    <aside
+        class="navigator"
+        id="navigator">
+
+        <div class="navigator-header">
+
+            <div class="navigator-title">
+                GERALTER // NAVIGATOR
+            </div>
+
+            <div class="navigator-status">
+                <span>●</span> ONLINE
+            </div>
+
+        </div>
+
+
+        <div class="nav-items">
+
+            <button
+                class="nav-item active"
+                data-target="home"
+                onclick="navigateTo('home')">
+
+                ⌂ &nbsp; HOME
+
             </button>
 
-            <button onclick="openModal('stack')">
-                STACK
+
+            <button
+                class="nav-item"
+                data-target="about"
+                onclick="navigateTo('about')">
+
+                ▸ &nbsp; ABOUT ME
+
             </button>
 
-            <button onclick="openModal('arcade')">
-                ARCADE
+
+            <button
+                class="nav-item"
+                data-target="stack"
+                onclick="navigateTo('stack')">
+
+                ▸ &nbsp; TECH STACK
+
             </button>
 
-            <button onclick="openModal('stats')">
-                STATS
+
+            <button
+                class="nav-item"
+                data-target="arcade"
+                onclick="navigateTo('arcade')">
+
+                ▸ &nbsp; NEON-ARCADE
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-target="stats"
+                onclick="navigateTo('stats')">
+
+                ▸ &nbsp; GITHUB STATS
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-target="projects"
+                onclick="navigateTo('projects')">
+
+                ▸ &nbsp; PROJECTS
+
             </button>
 
         </div>
 
-    </nav>
+
+        <div class="navigator-footer">
+
+            GERALTER OS v1.0<br>
+            DIGITAL SPACE
+
+        </div>
+
+    </aside>
 
 
-    <main class="container">
+    <!-- =========================================================
+         WINDOW OVERLAY
+    ========================================================== -->
+
+    <div
+        class="window-overlay"
+        id="windowOverlay"
+        onclick="closeAllWindows()">
+    </div>
 
 
-        <!-- =================================================
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+
+    <main id="home">
+
+
+        <!-- =====================================================
              HERO
-        ================================================= -->
+        ====================================================== -->
 
-        <header class="hero">
+        <section class="hero">
 
-            <div>
+            <div class="terminal">
 
-                <div class="terminal">
+                <span class="prompt">
+                    geralter@github
+                </span>
 
-                    <span class="green">
-                        geralter@github
-                    </span>:~$
+                :~$
 
-                    <span class="purple">
-                        whoami
-                    </span>
-
-                </div>
-
-
-                <h1 class="logo">
-                    GERALTER
-                </h1>
-
-
-                <div class="subtitle">
-
-                    DEVELOPER • STUDENT • TECH ENTHUSIAST
-
-                </div>
-
-
-                <p class="description">
-
-                    Building things, learning new technologies
-                    and exploring the digital world.
-
-                </p>
-
-
-                <div class="hero-buttons">
-
-                    <button
-                        class="hero-button"
-                        onclick="openModal('about')"
-                    >
-                        ABOUT ME →
-                    </button>
-
-
-                    <button
-                        class="hero-button"
-                        onclick="openModal('stack')"
-                    >
-                        TECH STACK →
-                    </button>
-
-
-                    <button
-                        class="hero-button"
-                        onclick="openModal('arcade')"
-                    >
-                        NEON-ARCADE →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- =================================================
-             INTERACTIVE WINDOWS
-        ================================================= -->
-
-        <section>
-
-            <div class="section-title">
-
-                <h2>
-                    ▸ DIGITAL SPACE
-                </h2>
-
-                <span>
-                    // SELECT MODULE
+                <span class="command">
+                    whoami
                 </span>
 
             </div>
 
 
-            <div class="windows">
+            <h1>
+                GERALTER
+            </h1>
 
 
-                <!-- ABOUT -->
+            <div class="hero-subtitle">
 
-                <button
-                    class="window-button"
-                    onclick="openModal('about')"
-                >
+                DEVELOPER • STUDENT • TECH ENTHUSIAST
 
-                    <div class="window-icon">
+            </div>
+
+
+            <p class="hero-description">
+
+                Building things, learning new technologies
+                and exploring the digital world.
+
+            </p>
+
+
+            <button
+                class="start-button"
+                onclick="openWindow('about')">
+
+                [ ENTER DIGITAL SPACE ]
+
+            </button>
+
+        </section>
+
+
+        <!-- =====================================================
+             DESKTOP
+        ====================================================== -->
+
+        <section class="desktop">
+
+            <div class="desktop-label">
+
+                // DIGITAL SPACE
+
+            </div>
+
+
+            <div class="desktop-grid">
+
+
+                <div
+                    class="desktop-icon"
+                    onclick="openWindow('about')">
+
+                    <span class="icon">
                         👤
-                    </div>
+                    </span>
 
-                    <div class="window-name">
+                    <h3>
                         ABOUT ME
-                    </div>
+                    </h3>
 
-                    <div class="window-description">
-                        Who I am, what I study
-                        and what I'm interested in.
-                    </div>
+                    <p>
+                        Profile, education and mindset.
+                    </p>
 
-                    <div class="window-arrow">
-                        →
-                    </div>
-
-                </button>
+                </div>
 
 
-                <!-- STACK -->
+                <div
+                    class="desktop-icon"
+                    onclick="openWindow('stack')">
 
-                <button
-                    class="window-button"
-                    onclick="openModal('stack')"
-                >
-
-                    <div class="window-icon">
+                    <span class="icon">
                         ⚙️
-                    </div>
+                    </span>
 
-                    <div class="window-name">
+                    <h3>
                         TECH STACK
-                    </div>
+                    </h3>
 
-                    <div class="window-description">
-                        Technologies, programming
-                        languages and tools.
-                    </div>
+                    <p>
+                        Technologies and programming.
+                    </p>
 
-                    <div class="window-arrow">
-                        →
-                    </div>
-
-                </button>
+                </div>
 
 
-                <!-- ARCADE -->
+                <div
+                    class="desktop-icon"
+                    onclick="openWindow('arcade')">
 
-                <button
-                    class="window-button"
-                    onclick="openModal('arcade')"
-                >
-
-                    <div class="window-icon">
+                    <span class="icon">
                         🕹️
-                    </div>
+                    </span>
 
-                    <div class="window-name">
+                    <h3>
                         NEON-ARCADE
-                    </div>
+                    </h3>
 
-                    <div class="window-description">
-                        My experimental neon
-                        browser game project.
-                    </div>
+                    <p>
+                        Experimental digital playground.
+                    </p>
 
-                    <div class="window-arrow">
-                        →
-                    </div>
-
-                </button>
+                </div>
 
 
-                <!-- STATS -->
+                <div
+                    class="desktop-icon"
+                    onclick="openWindow('stats')">
 
-                <button
-                    class="window-button"
-                    onclick="openModal('stats')"
-                >
-
-                    <div class="window-icon">
+                    <span class="icon">
                         📊
-                    </div>
+                    </span>
 
-                    <div class="window-name">
-                        GITHUB // STATS
-                    </div>
+                    <h3>
+                        GITHUB STATS
+                    </h3>
 
-                    <div class="window-description">
-                        GitHub activity and
-                        development information.
-                    </div>
+                    <p>
+                        Development activity.
+                    </p>
 
-                    <div class="window-arrow">
-                        →
-                    </div>
+                </div>
 
-                </button>
 
             </div>
 
         </section>
 
 
-        <!-- =================================================
-             PROJECTS
-        ================================================= -->
+        <!-- =====================================================
+             ABOUT
+        ====================================================== -->
 
-        <section>
+        <section
+            class="section"
+            id="about">
 
             <div class="section-title">
 
-                <h2>
-                    ▸ PROJECTS
-                </h2>
+                ## ▸ ABOUT ME
+
+                <span>
+                    // PROFILE
+                </span>
+
+            </div>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <strong>
+                        🎓 EDUCATION
+                    </strong>
+
+                    <p>
+                        Applied Informatics.
+                        Learning programming,
+                        web development and
+                        computer technologies.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <strong>
+                        💻 DEVELOPMENT
+                    </strong>
+
+                    <p>
+                        Programming and
+                        software development.
+                        Currently focusing on
+                        HTML, CSS and JavaScript.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <strong>
+                        ⚙️ GAMING & TECH
+                    </strong>
+
+                    <p>
+                        Minecraft modding,
+                        game technologies,
+                        PC hardware and
+                        digital experiments.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <strong>
+                        🧠 LEARNING
+                    </strong>
+
+                    <p>
+                        Constantly improving
+                        development skills
+                        and exploring new
+                        technologies.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <strong>
+                        🌐 EXPLORING
+                    </strong>
+
+                    <p>
+                        New technologies,
+                        interesting projects
+                        and everything
+                        happening in the digital world.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <strong>
+                        ⚡ MINDSET
+                    </strong>
+
+                    <p>
+                        Build • Learn • Experiment
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STACK
+        ====================================================== -->
+
+        <section
+            class="section"
+            id="stack">
+
+            <div class="section-title">
+
+                ## ▸ TECH STACK
+
+                <span>
+                    // TECHNOLOGIES
+                </span>
+
+            </div>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <strong>
+                        // CURRENTLY LEARNING
+                    </strong>
+
+                    <p>
+                        HTML5<br>
+                        CSS3<br>
+                        JavaScript<br>
+                        Web Development<br>
+                        GitHub
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <strong>
+                        // STUDIED
+                    </strong>
+
+                    <p>
+                        C++<br>
+                        Programming<br>
+                        Algorithms<br>
+                        Basic Computer Science
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <strong>
+                        // COMING SOON
+                    </strong>
+
+                    <p>
+                        Python<br>
+                        Advanced JavaScript<br>
+                        Advanced Web Development
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             ARCADE
+        ====================================================== -->
+
+        <section
+            class="section"
+            id="arcade">
+
+            <div class="section-title">
+
+                ## ▸ NEON-ARCADE
+
+                <span>
+                    // DIGITAL PLAYGROUND
+                </span>
+
+            </div>
+
+
+            <div class="card">
+
+                <strong>
+                    GERALTER // NEON-ARCADE
+                </strong>
+
+                <p>
+
+                    NEON-ARCADE is an experimental
+                    neon browser game and digital
+                    playground.
+
+                    <br><br>
+
+                    AUTO PLAYING • RANDOM PATTERNS
+                    • NEON ENERGY
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             STATS
+        ====================================================== -->
+
+        <section
+            class="section"
+            id="stats">
+
+            <div class="section-title">
+
+                ## ▸ GITHUB // STATS
+
+                <span>
+                    // ACTIVITY
+                </span>
+
+            </div>
+
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <strong>
+                        CONTRIBUTION ACTIVITY
+                    </strong>
+
+                    <p>
+                        GitHub activity
+                        and development overview.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <strong>
+                        DEVELOPMENT
+                    </strong>
+
+                    <p>
+                        Coding projects,
+                        experiments and
+                        university work.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <strong>
+                        GERALTER // GITHUB
+                    </strong>
+
+                    <p>
+                        Open-source projects
+                        and digital experiments.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             PROJECTS
+        ====================================================== -->
+
+        <section
+            class="section"
+            id="projects">
+
+            <div class="section-title">
+
+                ## ▸ PROJECTS
 
                 <span>
                     // WORKSPACE
@@ -1490,224 +1831,488 @@
             </div>
 
 
-            <div class="projects">
+            <div class="cards">
+
+                <div class="card">
+
+                    <strong>
+                        🕹️ NEON-ARCADE
+                    </strong>
+
+                    <p>
+                        Experimental neon
+                        browser game.
+                    </p>
+
+                </div>
 
 
-                <a
-                    href="https://github.com/Gera1ter/Neon-Arcade"
-                    target="_blank"
-                    class="project"
-                >
+                <div class="card">
 
-                    <div class="project-icon">
-                        🕹️
-                    </div>
+                    <strong>
+                        📦 ABC
+                    </strong>
 
-                    <div class="project-name">
-                        NEON-ARCADE
-                    </div>
+                    <p>
+                        Small university
+                        projects and experiments.
+                    </p>
 
-                    <div class="project-description">
-                        Experimental neon browser game.
-                    </div>
-
-                </a>
+                </div>
 
 
-                <a
-                    href="https://github.com/Gera1ter/ABC"
-                    target="_blank"
-                    class="project"
-                >
+                <div class="card">
 
-                    <div class="project-icon">
-                        📦
-                    </div>
+                    <strong>
+                        💻 GITHUB
+                    </strong>
 
-                    <div class="project-name">
-                        ABC
-                    </div>
+                    <p>
+                        Source code,
+                        experiments and
+                        development projects.
+                    </p>
 
-                    <div class="project-description">
-                        University projects and experiments.
-                    </div>
-
-                </a>
+                </div>
 
             </div>
 
         </section>
 
 
-        <!-- =================================================
-             FINAL
-        ================================================= -->
+        <!-- =====================================================
+             FOOTER
+        ====================================================== -->
 
-        <section
-            style="
-                text-align:center;
-                padding-bottom:90px;
-            "
-        >
+        <footer>
 
-            <div
-                style="
-                    color:var(--dim);
-                    font-size:9px;
-                    margin-bottom:15px;
-                "
-            >
+            <div class="gradient">
                 DIGITAL WORLD • BUILD • LEARN • EXPLORE
             </div>
 
+            <br>
 
-            <div
-                style="
-                    font-size:clamp(23px,5vw,38px);
-                    font-weight:700;
-                    background:var(--gradient);
-                    -webkit-background-clip:text;
-                    background-clip:text;
-                    color:transparent;
-                "
-            >
+            KEEP BUILDING. KEEP EXPLORING.
 
-                KEEP BUILDING.<br>
-                KEEP EXPLORING.
+            <br>
 
-            </div>
+            GERALTER // DIGITAL SPACE
 
-        </section>
+            <br><br>
+
+            © 2026 — Built with code & curiosity.
+
+        </footer>
 
 
     </main>
 
 
-    <!-- =====================================================
-         ABOUT MODAL
-    ===================================================== -->
+    <!-- =========================================================
+         ABOUT WINDOW
+    ========================================================== -->
 
     <div
-        class="modal"
-        id="about"
-        onclick="backgroundClose(event, 'about')"
-    >
+        class="window"
+        id="window-about"
+        data-window="about">
 
-        <div class="modal-window">
+        <div
+            class="window-header"
+            onmousedown="startDrag(event, this.parentElement)">
 
-            <div class="modal-header">
+            <span
+                class="window-dot dot-red"
+                onclick="closeWindow('about')">
+            </span>
 
-                <div class="modal-title">
-                    GERALTER://ABOUT_ME
-                </div>
+            <span
+                class="window-dot dot-yellow"
+                onclick="minimizeWindow('about')">
+            </span>
 
-                <div class="modal-controls">
+            <span
+                class="window-dot dot-green"
+                onclick="maximizeWindow('about')">
+            </span>
 
-                    <button
-                        class="control control-close"
-                        onclick="closeModal('about')"
-                    ></button>
+            <span class="window-title">
+                about_me.exe
+            </span>
 
-                </div>
+        </div>
 
+
+        <div class="window-content">
+
+            <div class="command-line">
+                <span>geralter@github</span>:~$ cat about.txt
             </div>
 
+            <h2>
+                ABOUT ME
+            </h2>
 
-            <div class="modal-body">
+            <p>
+                I'm Geralter — a student and developer
+                interested in programming, web development,
+                technology and gaming.
+            </p>
 
-                <h2>
-                    ABOUT ME
-                </h2>
+            <p>
+                I like building things, experimenting
+                with code and learning how different
+                technologies work.
+            </p>
 
+            <ul class="window-list">
 
-                <p>
-                    Developer • Student • Tech Enthusiast.
-                    I'm interested in programming, web development,
-                    game technologies and experimenting with
-                    different digital projects.
-                </p>
+                <li>
+                    🎓 Applied Informatics
+                </li>
 
+                <li>
+                    💻 Developer / Student
+                </li>
 
-                <div class="info-grid">
+                <li>
+                    🌐 Web Development
+                </li>
 
-                    <div class="info-card">
+                <li>
+                    🎮 Gaming & Technology
+                </li>
 
-                        <strong>
-                            🎓 EDUCATION
-                        </strong>
+                <li>
+                    ⚡ Build • Learn • Experiment
+                </li>
 
-                        <span>
-                            Applied Informatics
-                        </span>
+            </ul>
 
-                    </div>
+        </div>
 
-
-                    <div class="info-card">
-
-                        <strong>
-                            💻 DEVELOPMENT
-                        </strong>
-
-                        <span>
-                            Programming & software development
-                        </span>
-
-                    </div>
-
-
-                    <div class="info-card">
-
-                        <strong>
-                            ⚙️ GAMING TECH
-                        </strong>
-
-                        <span>
-                            Minecraft modding & game technologies
-                        </span>
-
-                    </div>
+    </div>
 
 
-                    <div class="info-card">
+    <!-- =========================================================
+         STACK WINDOW
+    ========================================================== -->
 
-                        <strong>
-                            🧠 LEARNING
-                        </strong>
+    <div
+        class="window"
+        id="window-stack"
+        data-window="stack">
 
-                        <span>
-                            Improving development skills
-                        </span>
+        <div
+            class="window-header"
+            onmousedown="startDrag(event, this.parentElement)">
 
-                    </div>
+            <span
+                class="window-dot dot-red"
+                onclick="closeWindow('stack')">
+            </span>
+
+            <span
+                class="window-dot dot-yellow"
+                onclick="minimizeWindow('stack')">
+            </span>
+
+            <span
+                class="window-dot dot-green"
+                onclick="maximizeWindow('stack')">
+            </span>
+
+            <span class="window-title">
+                tech_stack.exe
+            </span>
+
+        </div>
 
 
-                    <div class="info-card">
+        <div class="window-content">
 
-                        <strong>
-                            🌐 EXPLORING
-                        </strong>
+            <div class="command-line">
+                <span>geralter@github</span>:~$ ls technologies/
+            </div>
 
-                        <span>
-                            New technologies & interesting projects
-                        </span>
+            <h2>
+                TECH STACK
+            </h2>
 
-                    </div>
+            <ul class="window-list">
+
+                <li>
+                    HTML5 — currently learning
+                </li>
+
+                <li>
+                    CSS3 — web styling
+                </li>
+
+                <li>
+                    JavaScript — currently learning
+                </li>
+
+                <li>
+                    C++ — studied
+                </li>
+
+                <li>
+                    GitHub — version control
+                </li>
+
+                <li>
+                    Python — coming soon
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
 
 
-                    <div class="info-card">
+    <!-- =========================================================
+         ARCADE WINDOW
+    ========================================================== -->
 
-                        <strong>
-                            ⚡ MINDSET
-                        </strong>
+    <div
+        class="window"
+        id="window-arcade"
+        data-window="arcade">
 
-                        <span>
-                            Build • Learn • Experiment
-                        </span>
+        <div
+            class="window-header"
+            onmousedown="startDrag(event, this.parentElement)">
 
-                    </div>
+            <span
+                class="window-dot dot-red"
+                onclick="closeWindow('arcade')">
+            </span>
 
-                </div>
+            <span
+                class="window-dot dot-yellow"
+                onclick="minimizeWindow('arcade')">
+            </span>
+
+            <span
+                class="window-dot dot-green"
+                onclick="maximizeWindow('arcade')">
+            </span>
+
+            <span class="window-title">
+                neon_arcade.exe
+            </span>
+
+        </div>
+
+
+        <div class="window-content">
+
+            <div class="command-line">
+                <span>geralter@github</span>:~$ ./neon-arcade
+            </div>
+
+            <h2>
+                NEON-ARCADE
+            </h2>
+
+            <p>
+                Experimental neon browser game
+                and digital playground.
+            </p>
+
+            <p>
+                A place for experiments,
+                random patterns and
+                digital creativity.
+            </p>
+
+            <a
+                class="project-link"
+                href="https://github.com/Gera1ter/Neon-Arcade"
+                target="_blank">
+
+                <strong>
+                    OPEN PROJECT →
+                </strong>
+
+                GitHub / Gera1ter / Neon-Arcade
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         STATS WINDOW
+    ========================================================== -->
+
+    <div
+        class="window"
+        id="window-stats"
+        data-window="stats">
+
+        <div
+            class="window-header"
+            onmousedown="startDrag(event, this.parentElement)">
+
+            <span
+                class="window-dot dot-red"
+                onclick="closeWindow('stats')">
+            </span>
+
+            <span
+                class="window-dot dot-yellow"
+                onclick="minimizeWindow('stats')">
+            </span>
+
+            <span
+                class="window-dot dot-green"
+                onclick="maximizeWindow('stats')">
+            </span>
+
+            <span class="window-title">
+                github_stats.exe
+            </span>
+
+        </div>
+
+
+        <div class="window-content">
+
+            <div class="command-line">
+                <span>geralter@github</span>:~$ git status
+            </div>
+
+            <h2>
+                GITHUB // STATS
+            </h2>
+
+            <ul class="window-list">
+
+                <li>
+                    CONTRIBUTION ACTIVITY
+                </li>
+
+                <li>
+                    DEVELOPMENT OVERVIEW
+                </li>
+
+                <li>
+                    OPEN SOURCE PROJECTS
+                </li>
+
+                <li>
+                    EXPERIMENTAL BUILDS
+                </li>
+
+            </ul>
+
+            <br>
+
+            <a
+                class="project-link"
+                href="https://github.com/Gera1ter"
+                target="_blank">
+
+                <strong>
+                    OPEN GITHUB →
+                </strong>
+
+                github.com/Gera1ter
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         PROJECTS WINDOW
+    ========================================================== -->
+
+    <div
+        class="window"
+        id="window-projects"
+        data-window="projects">
+
+        <div
+            class="window-header"
+            onmousedown="startDrag(event, this.parentElement)">
+
+            <span
+                class="window-dot dot-red"
+                onclick="closeWindow('projects')">
+            </span>
+
+            <span
+                class="window-dot dot-yellow"
+                onclick="minimizeWindow('projects')">
+            </span>
+
+            <span
+                class="window-dot dot-green"
+                onclick="maximizeWindow('projects')">
+            </span>
+
+            <span class="window-title">
+                projects.exe
+            </span>
+
+        </div>
+
+
+        <div class="window-content">
+
+            <div class="command-line">
+                <span>geralter@github</span>:~$ ls projects/
+            </div>
+
+            <h2>
+                PROJECTS
+            </h2>
+
+
+            <a
+                class="project-link"
+                href="https://github.com/Gera1ter/Neon-Arcade"
+                target="_blank">
+
+                <strong>
+                    🕹️ NEON-ARCADE
+                </strong>
+
+                Experimental neon browser game.
+
+            </a>
+
+
+            <a
+                class="project-link"
+                href="https://github.com/Gera1ter"
+                target="_blank">
+
+                <strong>
+                    💻 GERALTER // GITHUB
+                </strong>
+
+                Source code and experiments.
+
+            </a>
+
+
+            <div class="project-link">
+
+                <strong>
+                    📦 ABC
+                </strong>
+
+                University projects
+                and programming experiments.
 
             </div>
 
@@ -1716,331 +2321,577 @@
     </div>
 
 
-    <!-- =====================================================
-         STACK MODAL
-    ===================================================== -->
+    <!-- =========================================================
+         DOCK
+    ========================================================== -->
 
     <div
-        class="modal"
-        id="stack"
-        onclick="backgroundClose(event, 'stack')"
-    >
-
-        <div class="modal-window">
-
-            <div class="modal-header">
-
-                <div class="modal-title">
-                    GERALTER://TECH_STACK
-                </div>
-
-                <div class="modal-controls">
-
-                    <button
-                        class="control control-close"
-                        onclick="closeModal('stack')"
-                    ></button>
-
-                </div>
-
-            </div>
-
-
-            <div class="modal-body">
-
-                <h2>
-                    TECH STACK
-                </h2>
-
-
-                <p>
-                    Technologies and tools I'm learning,
-                    studying and planning to explore.
-                </p>
-
-
-                <div class="tech-list">
-
-                    <span class="tech">C++</span>
-
-                    <span class="tech">HTML5</span>
-
-                    <span class="tech">CSS</span>
-
-                    <span class="tech">JavaScript</span>
-
-                    <span class="tech">Python</span>
-
-                    <span class="tech">Git</span>
-
-                    <span class="tech">GitHub</span>
-
-                    <span class="tech">VS Code</span>
-
-                    <span class="tech">Minecraft</span>
-
-                    <span class="tech">NeoForge</span>
-
-                    <span class="tech">Create</span>
-
-                    <span class="tech">Mekanism</span>
-
-                    <span class="tech">
-                        Applied Energistics 2
-                    </span>
-
-                </div>
-
-            </div>
-
-        </div>
-
+        class="dock"
+        id="dock">
     </div>
 
 
-    <!-- =====================================================
-         ARCADE MODAL
-    ===================================================== -->
-
-    <div
-        class="modal"
-        id="arcade"
-        onclick="backgroundClose(event, 'arcade')"
-    >
-
-        <div class="modal-window">
-
-            <div class="modal-header">
-
-                <div class="modal-title">
-                    GERALTER://NEON_ARCADE
-                </div>
-
-                <div class="modal-controls">
-
-                    <button
-                        class="control control-close"
-                        onclick="closeModal('arcade')"
-                    ></button>
-
-                </div>
-
-            </div>
-
-
-            <div class="modal-body">
-
-                <h2>
-                    NEON-ARCADE
-                </h2>
-
-
-                <div class="arcade">
-
-                    <div class="arcade-content">
-
-                        <div class="arcade-title">
-                            NEON-ARCADE
-                        </div>
-
-                        <div class="arcade-subtitle">
-                            DIGITAL PLAYGROUND
-                        </div>
-
-
-                        <a
-                            href="https://github.com/Gera1ter/Neon-Arcade"
-                            target="_blank"
-                            class="arcade-button"
-                        >
-                            OPEN PROJECT →
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
-         STATS MODAL
-    ===================================================== -->
-
-    <div
-        class="modal"
-        id="stats"
-        onclick="backgroundClose(event, 'stats')"
-    >
-
-        <div class="modal-window">
-
-            <div class="modal-header">
-
-                <div class="modal-title">
-                    GERALTER://GITHUB_STATS
-                </div>
-
-                <div class="modal-controls">
-
-                    <button
-                        class="control control-close"
-                        onclick="closeModal('stats')"
-                    ></button>
-
-                </div>
-
-            </div>
-
-
-            <div class="modal-body">
-
-                <h2>
-                    GITHUB // STATS
-                </h2>
-
-
-                <p>
-                    My GitHub workspace and development activity.
-                </p>
-
-
-                <div class="info-grid">
-
-                    <div class="info-card">
-
-                        <strong>
-                            GITHUB
-                        </strong>
-
-                        <span>
-                            github.com/Gera1ter
-                        </span>
-
-                    </div>
-
-
-                    <div class="info-card">
-
-                        <strong>
-                            MAIN PROJECT
-                        </strong>
-
-                        <span>
-                            NEON-ARCADE
-                        </span>
-
-                    </div>
-
-                </div>
-
-                <div style="margin-top:25px;">
-
-                    <a
-                        href="https://github.com/Gera1ter"
-                        target="_blank"
-                        class="arcade-button"
-                    >
-                        OPEN GITHUB →
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =====================================================
-         FOOTER
-    ===================================================== -->
-
-    <footer>
-
-        <span>
-            GERALTER
-        </span>
-
-        // DIGITAL SPACE
-
-        <br><br>
-
-        © 2026 — Built with code & curiosity.
-
-    </footer>
-
-
-    <!-- =====================================================
+    <!-- =========================================================
          JAVASCRIPT
-    ===================================================== -->
+    ========================================================== -->
 
     <script>
 
-        function openModal(id) {
+        /* =====================================================
+           VARIABLES
+        ====================================================== */
 
-            const modal =
-                document.getElementById(id);
+        let zIndex = 3001;
 
-            modal.classList.add("active");
+        let dragging = false;
 
-            document.body.style.overflow = "hidden";
+        let dragWindow = null;
+
+        let offsetX = 0;
+
+        let offsetY = 0;
+
+
+        /* =====================================================
+           NAVIGATOR
+        ====================================================== */
+
+        function toggleNavigator() {
+
+            const navigator =
+                document.getElementById("navigator");
+
+            navigator.classList.toggle("active");
 
         }
 
 
-        function closeModal(id) {
+        /* =====================================================
+           NAVIGATION
+        ====================================================== */
 
-            const modal =
-                document.getElementById(id);
+        function navigateTo(target) {
 
-            modal.classList.remove("active");
+            const navigator =
+                document.getElementById("navigator");
 
-            document.body.style.overflow = "";
+            navigator.classList.remove("active");
+
+
+            document
+                .querySelectorAll(".nav-item")
+                .forEach(item => {
+
+                    item.classList.remove("active");
+
+                    if (
+                        item.dataset.target === target
+                    ) {
+
+                        item.classList.add("active");
+
+                    }
+
+                });
+
+
+            if (target === "home") {
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+                return;
+            }
+
+
+            openWindow(target);
 
         }
 
 
-        function backgroundClose(event, id) {
+        /* =====================================================
+           OPEN WINDOW
+        ====================================================== */
 
-            if (
-                event.target ===
-                event.currentTarget
-            ) {
+        function openWindow(name) {
 
-                closeModal(id);
+            const windowElement =
+                document.getElementById(
+                    "window-" + name
+                );
+
+            if (!windowElement) return;
+
+
+            windowElement.classList.add("open");
+
+            windowElement.classList.remove("minimized");
+
+
+            zIndex++;
+
+            windowElement.style.zIndex =
+                zIndex;
+
+
+            document
+                .getElementById("windowOverlay")
+                .classList.add("active");
+
+
+            updateDock();
+
+        }
+
+
+        /* =====================================================
+           CLOSE WINDOW
+        ====================================================== */
+
+        function closeWindow(name) {
+
+            const windowElement =
+                document.getElementById(
+                    "window-" + name
+                );
+
+            if (!windowElement) return;
+
+
+            windowElement.classList.remove("open");
+
+            windowElement.classList.remove("maximized");
+
+
+            updateDock();
+
+            checkOverlay();
+
+        }
+
+
+        /* =====================================================
+           CLOSE ALL
+        ====================================================== */
+
+        function closeAllWindows() {
+
+            document
+                .querySelectorAll(".window")
+                .forEach(windowElement => {
+
+                    windowElement.classList.remove(
+                        "open"
+                    );
+
+                    windowElement.classList.remove(
+                        "maximized"
+                    );
+
+                });
+
+
+            document
+                .getElementById("windowOverlay")
+                .classList.remove("active");
+
+
+            updateDock();
+
+        }
+
+
+        /* =====================================================
+           MINIMIZE
+        ====================================================== */
+
+        function minimizeWindow(name) {
+
+            const windowElement =
+                document.getElementById(
+                    "window-" + name
+                );
+
+            if (!windowElement) return;
+
+
+            windowElement.classList.remove(
+                "open"
+            );
+
+
+            windowElement.dataset.minimized =
+                "true";
+
+
+            updateDock();
+
+            checkOverlay();
+
+        }
+
+
+        /* =====================================================
+           MAXIMIZE
+        ====================================================== */
+
+        function maximizeWindow(name) {
+
+            const windowElement =
+                document.getElementById(
+                    "window-" + name
+                );
+
+            if (!windowElement) return;
+
+
+            windowElement.classList.toggle(
+                "maximized"
+            );
+
+
+            bringToFront(windowElement);
+
+        }
+
+
+        /* =====================================================
+           BRING TO FRONT
+        ====================================================== */
+
+        function bringToFront(element) {
+
+            zIndex++;
+
+            element.style.zIndex =
+                zIndex;
+
+        }
+
+
+        /* =====================================================
+           DOCK
+        ====================================================== */
+
+        function updateDock() {
+
+            const dock =
+                document.getElementById("dock");
+
+            dock.innerHTML = "";
+
+
+            document
+                .querySelectorAll(".window")
+                .forEach(windowElement => {
+
+                    const isOpen =
+                        windowElement.classList.contains(
+                            "open"
+                        );
+
+                    const isMinimized =
+                        windowElement.dataset.minimized ===
+                        "true";
+
+
+                    if (
+                        isOpen ||
+                        isMinimized
+                    ) {
+
+                        const name =
+                            windowElement.dataset.window;
+
+
+                        const button =
+                            document.createElement(
+                                "button"
+                            );
+
+
+                        button.className =
+                            "dock-item";
+
+
+                        button.textContent =
+                            getWindowName(name);
+
+
+                        button.onclick =
+                            () => {
+
+                                windowElement.dataset
+                                    .minimized =
+                                    "false";
+
+                                windowElement.classList
+                                    .add("open");
+
+                                bringToFront(
+                                    windowElement
+                                );
+
+                                checkOverlay();
+
+                            };
+
+
+                        dock.appendChild(button);
+
+                    }
+
+                });
+
+
+            if (dock.children.length > 0) {
+
+                dock.classList.add("active");
+
+            } else {
+
+                dock.classList.remove("active");
 
             }
 
         }
 
 
+        function getWindowName(name) {
+
+            const names = {
+
+                about: "👤 ABOUT",
+
+                stack: "⚙️ STACK",
+
+                arcade: "🕹️ ARCADE",
+
+                stats: "📊 STATS",
+
+                projects: "📦 PROJECTS"
+
+            };
+
+            return names[name] || name;
+
+        }
+
+
+        /* =====================================================
+           OVERLAY
+        ====================================================== */
+
+        function checkOverlay() {
+
+            const anyOpen =
+                document.querySelector(
+                    ".window.open"
+                );
+
+            const overlay =
+                document.getElementById(
+                    "windowOverlay"
+                );
+
+
+            if (anyOpen) {
+
+                overlay.classList.add(
+                    "active"
+                );
+
+            } else {
+
+                overlay.classList.remove(
+                    "active"
+                );
+
+            }
+
+        }
+
+
+        /* =====================================================
+           DRAG WINDOWS
+        ====================================================== */
+
+        function startDrag(event, element) {
+
+            if (
+                event.target.classList.contains(
+                    "window-dot"
+                )
+            ) {
+                return;
+            }
+
+
+            if (
+                element.classList.contains(
+                    "maximized"
+                )
+            ) {
+                return;
+            }
+
+
+            dragging = true;
+
+            dragWindow = element;
+
+
+            const rect =
+                element.getBoundingClientRect();
+
+
+            offsetX =
+                event.clientX -
+                rect.left;
+
+            offsetY =
+                event.clientY -
+                rect.top;
+
+
+            bringToFront(element);
+
+
+            document.addEventListener(
+                "mousemove",
+                dragMove
+            );
+
+            document.addEventListener(
+                "mouseup",
+                stopDrag
+            );
+
+        }
+
+
+        function dragMove(event) {
+
+            if (
+                !dragging ||
+                !dragWindow
+            ) {
+                return;
+            }
+
+
+            let x =
+                event.clientX -
+                offsetX;
+
+            let y =
+                event.clientY -
+                offsetY;
+
+
+            const maxX =
+                window.innerWidth -
+                dragWindow.offsetWidth -
+                10;
+
+
+            const maxY =
+                window.innerHeight -
+                dragWindow.offsetHeight -
+                10;
+
+
+            x =
+                Math.max(
+                    10,
+                    Math.min(
+                        x,
+                        maxX
+                    )
+                );
+
+
+            y =
+                Math.max(
+                    10,
+                    Math.min(
+                        y,
+                        maxY
+                    )
+                );
+
+
+            dragWindow.style.left =
+                x + "px";
+
+
+            dragWindow.style.top =
+                y + "px";
+
+
+            dragWindow.style.transform =
+                "none";
+
+        }
+
+
+        function stopDrag() {
+
+            dragging = false;
+
+            dragWindow = null;
+
+
+            document.removeEventListener(
+                "mousemove",
+                dragMove
+            );
+
+            document.removeEventListener(
+                "mouseup",
+                stopDrag
+            );
+
+        }
+
+
+        /* =====================================================
+           CLICK WINDOW = FRONT
+        ====================================================== */
+
+        document
+            .querySelectorAll(".window")
+            .forEach(windowElement => {
+
+                windowElement.addEventListener(
+                    "mousedown",
+                    () => {
+
+                        bringToFront(
+                            windowElement
+                        );
+
+                    }
+                );
+
+            });
+
+
+        /* =====================================================
+           ESC CLOSE
+        ====================================================== */
+
         document.addEventListener(
             "keydown",
-            function(event) {
+            event => {
 
                 if (
                     event.key === "Escape"
                 ) {
 
-                    document
-                        .querySelectorAll(".modal.active")
-                        .forEach(
-                            modal => {
-
-                                modal.classList.remove(
-                                    "active"
-                                );
-
-                            }
-                        );
-
-                    document.body.style.overflow = "";
+                    closeAllWindows();
 
                 }
 
@@ -2048,44 +2899,41 @@
         );
 
 
-        /* Dynamic title */
+        /* =====================================================
+           INITIAL STATE
+        ====================================================== */
 
-        const titles = [
-
-            "GERALTER // DIGITAL WORLD",
-
-            "GERALTER // DEVELOPER",
-
-            "GERALTER // TECH ENTHUSIAST",
-
-            "GERALTER // NEON-ARCADE"
-
-        ];
+        updateDock();
 
 
-        let titleIndex = 0;
+        /* =====================================================
+           TERMINAL CURSOR EFFECT
+        ====================================================== */
+
+        const command =
+            document.querySelector(
+                ".terminal .command"
+            );
 
 
-        setInterval(
-            () => {
+        let cursorVisible = true;
 
-                titleIndex =
-                    (
-                        titleIndex + 1
-                    )
-                    % titles.length;
 
-                document.title =
-                    titles[titleIndex];
+        setInterval(() => {
 
-            },
-            3500
-        );
+            cursorVisible =
+                !cursorVisible;
+
+
+            command.style.borderRight =
+                cursorVisible
+                    ? "2px solid #4ECDC4"
+                    : "2px solid transparent";
+
+        }, 500);
+
 
     </script>
 
-
 </body>
-
 </html>
-```
