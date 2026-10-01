@@ -1,1103 +1,2091 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1.0"
     >
+
     <title>GERALTER // DIGITAL WORLD</title>
+
     <meta
         name="description"
-        content="Geralter — Developer • Student • Tech Enthusiast"
+        content="GERALTER — Developer • Student • Tech Enthusiast"
     >
+
     <style>
-        /* =========================================================
-           GERALTER // README WEB VERSION
-           ========================================================= */
+
         @import url(
             'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap'
         );
-        /* =========================================================
+
+
+        /* =====================================================
            VARIABLES
-           ========================================================= */
+        ===================================================== */
+
         :root {
-            --background: #050507;
-            --background-soft: #09090d;
-            --card: rgba(12, 12, 18, 0.78);
-            --card-hover: rgba(18, 18, 26, 0.9);
-            --text: #f2f2f4;
-            --text-soft: #a4a4ae;
-            --text-dim: #666672;
-            --border: rgba(255, 255, 255, 0.075);
+
+            --bg: #050507;
+            --bg2: #09090e;
+
+            --card: rgba(13, 13, 20, 0.78);
+
+            --text: #f4f4f6;
+            --muted: #8b8b96;
+            --dim: #555560;
+
+            --border: rgba(255,255,255,0.08);
+
             --cyan: #4ECDC4;
             --purple: #9B59B6;
+
             --gradient:
                 linear-gradient(
                     110deg,
-                    #4ECDC4 0%,
-                    #9B59B6 100%
+                    #4ECDC4,
+                    #9B59B6
                 );
-            --glow-cyan:
-                0 0 30px rgba(78, 205, 196, 0.12);
-            --glow-purple:
-                0 0 30px rgba(155, 89, 182, 0.12);
+
         }
-        /* =========================================================
+
+
+        /* =====================================================
            RESET
-           ========================================================= */
+        ===================================================== */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+
         html {
             scroll-behavior: smooth;
         }
+
+
         body {
+
             min-height: 100vh;
+
             background:
+
                 radial-gradient(
                     circle at 10% 0%,
-                    rgba(78, 205, 196, 0.055),
+                    rgba(78,205,196,0.07),
                     transparent 28%
                 ),
+
                 radial-gradient(
-                    circle at 90% 20%,
-                    rgba(155, 89, 182, 0.06),
+                    circle at 90% 15%,
+                    rgba(155,89,182,0.08),
                     transparent 30%
                 ),
-                var(--background);
+
+                var(--bg);
+
             color: var(--text);
+
             font-family:
                 'JetBrains Mono',
                 monospace;
-            line-height: 1.6;
+
             overflow-x: hidden;
+
         }
-        /* =========================================================
-           SUBTLE GRID
-           ========================================================= */
+
+
+        /* =====================================================
+           GRID
+        ===================================================== */
+
         body::before {
+
             content: "";
+
             position: fixed;
+
             inset: 0;
+
             background-image:
+
                 linear-gradient(
                     rgba(255,255,255,0.012) 1px,
                     transparent 1px
                 ),
+
                 linear-gradient(
                     90deg,
                     rgba(255,255,255,0.012) 1px,
                     transparent 1px
                 );
+
             background-size: 42px 42px;
+
             pointer-events: none;
+
             z-index: -2;
+
         }
-        /* =========================================================
-           MAIN CONTAINER
-           ========================================================= */
-        .page {
-            width: min(
-                980px,
-                calc(100% - 36px)
-            );
-            margin: 0 auto;
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .container {
+
+            width:
+                min(
+                    1000px,
+                    calc(100% - 30px)
+                );
+
+            margin: auto;
+
         }
-        /* =========================================================
-           HEADER
-           ========================================================= */
-        header {
-            min-height: 82vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        nav {
+
+            position: fixed;
+
+            top: 18px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            width:
+                min(
+                    1000px,
+                    calc(100% - 30px)
+                );
+
             padding:
-                100px
-                0
-                70px;
+                12px 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background:
+                rgba(7,7,11,0.78);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 12px;
+
+            backdrop-filter:
+                blur(18px);
+
+            z-index: 1000;
+
         }
-        .terminal {
-            font-size: 12px;
-            color: var(--text-dim);
-            margin-bottom: 22px;
-        }
-        .terminal .prompt {
-            color: var(--cyan);
-            text-shadow:
-                0 0 12px
-                rgba(78, 205, 196, 0.35);
-        }
-        .terminal .command {
-            color: var(--purple);
-            text-shadow:
-                0 0 12px
-                rgba(155, 89, 182, 0.35);
-        }
-        /* =========================================================
-           LOGO
-           ========================================================= */
-        .logo {
-            font-size:
-                clamp(
-                    52px,
-                    11vw,
-                    100px
-                );
-            line-height: 0.95;
-            letter-spacing:
-                clamp(
-                    -6px,
-                    -0.5vw,
-                    -2px
-                );
+
+
+        .nav-logo {
+
+            color: white;
+
+            text-decoration: none;
+
             font-weight: 700;
+
+            font-size: 13px;
+
+        }
+
+
+        .nav-logo span {
+
             background:
                 var(--gradient);
+
             -webkit-background-clip: text;
             background-clip: text;
+
             color: transparent;
+
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            gap: 18px;
+
+        }
+
+
+        .nav-links button {
+
+            background: none;
+
+            border: none;
+
+            color: var(--muted);
+
+            font-family: inherit;
+
+            font-size: 9px;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+
+        }
+
+
+        .nav-links button:hover {
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding:
+                120px 0 80px;
+
+        }
+
+
+        .terminal {
+
+            color: var(--dim);
+
+            font-size: 11px;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .terminal .green {
+
+            color: var(--cyan);
+
+        }
+
+
+        .terminal .purple {
+
+            color: var(--purple);
+
+        }
+
+
+        .logo {
+
+            font-size:
+                clamp(
+                    55px,
+                    12vw,
+                    105px
+                );
+
+            line-height: 0.9;
+
+            letter-spacing: -5px;
+
+            font-weight: 700;
+
+            background:
+                var(--gradient);
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+
             filter:
                 drop-shadow(
-                    0 0 18px
-                    rgba(78, 205, 196, 0.08)
-                )
-                drop-shadow(
-                    0 0 24px
-                    rgba(155, 89, 182, 0.08)
+                    0 0 25px
+                    rgba(78,205,196,0.10)
                 );
-            margin-bottom: 25px;
+
         }
-        .roles {
-            color: var(--text-soft);
-            font-size:
-                clamp(
-                    11px,
-                    2vw,
-                    14px
-                );
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        .description {
-            max-width: 680px;
-            margin:
-                20px auto
-                0;
-            color: var(--text-soft);
-            font-size: 12px;
-            line-height: 1.9;
-        }
-        /* =========================================================
-           HERO BADGES
-           ========================================================= */
-        .hero-tags {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 28px;
-        }
-        .hero-tag {
-            border:
-                1px solid var(--border);
-            background:
-                rgba(255,255,255,0.018);
-            color: var(--text-dim);
-            padding:
-                5px 10px;
-            border-radius: 6px;
-            font-size: 10px;
-            transition:
-                0.25s ease;
-        }
-        .hero-tag:hover {
-            color: var(--text);
-            border-color:
-                rgba(78, 205, 196, 0.25);
-            box-shadow:
-                var(--glow-cyan);
-        }
-        /* =========================================================
-           DIVIDER
-           ========================================================= */
-        .divider {
-            width: 100%;
-            height: 1px;
-            background:
-                linear-gradient(
-                    90deg,
-                    transparent,
-                    rgba(255,255,255,0.09),
-                    transparent
-                );
-            margin:
-                15px 0;
-        }
-        /* =========================================================
-           SECTIONS
-           ========================================================= */
-        section {
-            padding:
-                72px
-                0;
-        }
-        .section-heading {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-        .section-heading h2 {
-            font-size: 15px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: var(--text);
-        }
-        .section-heading h2::first-letter {
-            color: var(--cyan);
-        }
-        .section-label {
-            color: var(--text-dim);
-            font-size: 9px;
-            letter-spacing: 1px;
-        }
-        /* =========================================================
-           ABOUT ME
-           ========================================================= */
-        .about-grid {
-            display: grid;
-            grid-template-columns:
-                repeat(
-                    2,
-                    minmax(0, 1fr)
-                );
-            border:
-                1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            background:
-                rgba(255,255,255,0.012);
-        }
-        .about-item {
-            min-height: 72px;
-            display: grid;
-            grid-template-columns:
-                48px 1fr;
-            align-items: center;
-            gap: 10px;
-            padding:
-                15px 18px;
-            border-bottom:
-                1px solid var(--border);
-            transition:
-                0.25s ease;
-        }
-        .about-item:nth-child(odd) {
-            border-right:
-                1px solid var(--border);
-        }
-        .about-item:nth-last-child(-n+2) {
-            border-bottom: none;
-        }
-        .about-item:hover {
-            background:
-                rgba(255,255,255,0.025);
-        }
-        .about-icon {
-            font-size: 19px;
-            text-align: center;
-        }
-        .about-text {
+
+
+        .subtitle {
+
+            margin-top: 22px;
+
+            color: var(--muted);
+
             font-size: 11px;
-            color: var(--text-soft);
+
+            letter-spacing: 1px;
+
         }
-        .about-text strong {
-            display: block;
-            color: var(--text);
+
+
+        .description {
+
+            max-width: 600px;
+
+            margin:
+                18px auto 0;
+
+            color: var(--muted);
+
             font-size: 10px;
-            margin-bottom: 3px;
+
+            line-height: 1.8;
+
         }
-        /* =========================================================
-           TECH STACK
-           ========================================================= */
-        .stack {
-            display: grid;
-            grid-template-columns:
-                repeat(
-                    3,
-                    minmax(0, 1fr)
-                );
-            gap: 12px;
+
+
+        /* =====================================================
+           HERO BUTTONS
+        ===================================================== */
+
+        .hero-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 30px;
+
         }
-        .stack-card {
+
+
+        .hero-button {
+
             padding:
-                22px;
+                10px 15px;
+
             border:
                 1px solid var(--border);
-            border-radius: 10px;
+
+            border-radius: 7px;
+
+            background:
+                rgba(255,255,255,0.02);
+
+            color: var(--muted);
+
+            font-family: inherit;
+
+            font-size: 9px;
+
+            cursor: pointer;
+
+            transition:
+                0.25s;
+
+        }
+
+
+        .hero-button:hover {
+
+            color: white;
+
+            border-color:
+                rgba(78,205,196,0.3);
+
+            box-shadow:
+                0 0 25px
+                rgba(78,205,196,0.08);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =====================================================
+           SECTION
+        ===================================================== */
+
+        section {
+
+            padding:
+                70px 0;
+
+        }
+
+
+        .section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .section-title h2 {
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+        }
+
+
+        .section-title span {
+
+            color: var(--dim);
+
+            font-size: 9px;
+
+        }
+
+
+        /* =====================================================
+           WINDOWS
+        ===================================================== */
+
+        .windows {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 14px;
+
+        }
+
+
+        .window-button {
+
+            position: relative;
+
+            min-height: 150px;
+
+            padding: 24px;
+
+            text-align: left;
+
             background:
                 var(--card);
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 12px;
+
+            color: white;
+
+            font-family: inherit;
+
+            cursor: pointer;
+
+            overflow: hidden;
+
             transition:
                 0.3s ease;
+
         }
-        .stack-card:hover {
-            transform:
-                translateY(-3px);
-            background:
-                var(--card-hover);
-            border-color:
-                rgba(155,89,182,0.2);
-            box-shadow:
-                var(--glow-purple);
-        }
-        .stack-title {
-            font-size: 10px;
-            color: var(--cyan);
-            margin-bottom: 16px;
-            letter-spacing: 0.5px;
-        }
-        .stack-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 7px;
-        }
-        .skill {
-            font-size: 9px;
-            color: var(--text-soft);
-            padding:
-                5px 8px;
-            border:
-                1px solid var(--border);
-            border-radius: 5px;
-            background:
-                rgba(255,255,255,0.015);
-        }
-        /* =========================================================
-           NEON ARCADE
-           ========================================================= */
-        .arcade {
-            position: relative;
-            min-height: 360px;
-            border:
-                1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            background:
-                radial-gradient(
-                    circle at 50% 50%,
-                    rgba(78,205,196,0.045),
-                    transparent 40%
-                ),
-                radial-gradient(
-                    circle at 80% 20%,
-                    rgba(155,89,182,0.06),
-                    transparent 35%
-                ),
-                #07070b;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        /* animated scanlines */
-        .arcade::before {
+
+
+        .window-button::before {
+
             content: "";
+
             position: absolute;
-            inset: 0;
-            background:
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 3px,
-                    rgba(255,255,255,0.012) 4px
-                );
-            pointer-events: none;
-        }
-        .arcade-grid {
-            position: absolute;
-            inset: 0;
-            opacity: 0.16;
-            background-image:
-                linear-gradient(
-                    rgba(78,205,196,0.18) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(155,89,182,0.18) 1px,
-                    transparent 1px
-                );
-            background-size: 35px 35px;
-            mask-image:
-                radial-gradient(
-                    circle,
-                    black,
-                    transparent 75%
-                );
-        }
-        .arcade-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-        .arcade-mini {
-            font-size: 9px;
-            color: var(--text-dim);
-            letter-spacing: 3px;
-            margin-bottom: 14px;
-        }
-        .arcade-title {
-            font-size:
-                clamp(
-                    30px,
-                    7vw,
-                    55px
-                );
-            letter-spacing: 4px;
-            font-weight: 700;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 1px;
+
             background:
                 var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow:
-                0 0 30px
-                rgba(78,205,196,0.08);
+
+            opacity: 0.5;
+
         }
-        .arcade-status {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 9px;
-            margin-top: 17px;
-            color: var(--text-soft);
-            font-size: 9px;
-            letter-spacing: 1px;
-        }
-        .online {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
+
+
+        .window-button:hover {
+
+            transform:
+                translateY(-5px);
+
             background:
-                var(--cyan);
+                rgba(18,18,26,0.9);
+
+            border-color:
+                rgba(78,205,196,0.2);
+
             box-shadow:
-                0 0 12px
-                var(--cyan);
-            animation:
-                pulse 1.5s infinite;
+                0 15px 45px
+                rgba(0,0,0,0.25),
+
+                0 0 30px
+                rgba(78,205,196,0.05);
+
         }
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 0.35;
-                transform: scale(0.7);
-            }
+
+
+        .window-icon {
+
+            font-size: 25px;
+
+            margin-bottom: 16px;
+
         }
-        .arcade-info {
-            margin-top: 25px;
-            max-width: 560px;
-            color: var(--text-dim);
+
+
+        .window-name {
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+        }
+
+
+        .window-description {
+
+            margin-top: 8px;
+
+            color: var(--muted);
+
             font-size: 9px;
-            line-height: 1.8;
+
+            line-height: 1.7;
+
         }
-        .arcade-button {
-            display: inline-block;
-            margin-top: 22px;
-            padding:
-                8px 14px;
-            border:
-                1px solid
-                rgba(78,205,196,0.22);
-            border-radius: 6px;
+
+
+        .window-arrow {
+
+            position: absolute;
+
+            right: 20px;
+
+            bottom: 18px;
+
             color: var(--cyan);
-            text-decoration: none;
-            font-size: 9px;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
+        .modal {
+
+            position: fixed;
+
+            inset: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(0,0,0,0.72);
+
+            backdrop-filter:
+                blur(8px);
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            pointer-events: none;
+
             transition:
                 0.25s ease;
+
+            z-index: 2000;
+
         }
-        .arcade-button:hover {
-            color: white;
-            border-color:
-                var(--cyan);
-            box-shadow:
-                var(--glow-cyan);
+
+
+        .modal.active {
+
+            opacity: 1;
+
+            visibility: visible;
+
+            pointer-events: auto;
+
         }
-        /* =========================================================
-           GITHUB STATS
-           ========================================================= */
-        .stats {
-            display: grid;
-            grid-template-columns:
-                repeat(
-                    2,
-                    minmax(0, 1fr)
+
+
+        .modal-window {
+
+            width:
+                min(
+                    720px,
+                    100%
                 );
-            gap: 12px;
-        }
-        .stat-card {
-            min-height: 180px;
-            padding:
-                18px;
+
+            max-height:
+                85vh;
+
+            overflow-y: auto;
+
+            background:
+                #09090e;
+
             border:
                 1px solid var(--border);
-            border-radius: 10px;
-            background:
-                var(--card);
-            overflow: hidden;
-            position: relative;
+
+            border-radius: 14px;
+
+            box-shadow:
+
+                0 30px 100px
+                rgba(0,0,0,0.65),
+
+                0 0 45px
+                rgba(78,205,196,0.06);
+
+            transform:
+                scale(0.92)
+                translateY(20px);
+
+            transition:
+                0.3s ease;
+
         }
-        .stat-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background:
-                var(--gradient);
-            opacity: 0.45;
+
+
+        .modal.active
+        .modal-window {
+
+            transform:
+                scale(1)
+                translateY(0);
+
         }
-        .stat-title {
-            font-size: 9px;
-            color: var(--text-dim);
-            margin-bottom: 15px;
-        }
-        .stat-placeholder {
-            height: 115px;
+
+
+        /* =====================================================
+           MODAL HEADER
+        ===================================================== */
+
+        .modal-header {
+
+            height: 48px;
+
+            padding:
+                0 15px;
+
             display: flex;
+
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--text-dim);
-            font-size: 9px;
-            border:
-                1px dashed
-                rgba(255,255,255,0.06);
-            border-radius: 7px;
-        }
-        .stat-placeholder span {
-            color: var(--cyan);
-        }
-        /* =========================================================
-           PROJECTS
-           ========================================================= */
-        .projects {
-            border:
-                1px solid var(--border);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .project {
-            display: grid;
-            grid-template-columns:
-                70px 190px 1fr;
-            gap: 15px;
-            align-items: center;
-            padding:
-                16px 18px;
+
+            justify-content: space-between;
+
             border-bottom:
                 1px solid var(--border);
-            text-decoration: none;
-            color: inherit;
-            transition:
-                0.25s ease;
-        }
-        .project:last-child {
-            border-bottom: none;
-        }
-        .project:hover {
+
             background:
-                rgba(255,255,255,0.025);
+                rgba(255,255,255,0.015);
+
         }
-        .project-icon {
-            font-size: 18px;
-            text-align: center;
-        }
-        .project-name {
+
+
+        .modal-title {
+
+            color: var(--muted);
+
             font-size: 10px;
-            color: var(--text);
+
         }
-        .project-description {
-            font-size: 9px;
-            color: var(--text-dim);
+
+
+        .modal-controls {
+
+            display: flex;
+
+            gap: 7px;
+
         }
-        /* =========================================================
-           FINAL
-           ========================================================= */
-        .final {
-            text-align: center;
+
+
+        .control {
+
+            width: 9px;
+
+            height: 9px;
+
+            border-radius: 50%;
+
+            border: none;
+
+            cursor: pointer;
+
+        }
+
+
+        .control-close {
+
+            background:
+                #ff5f57;
+
+        }
+
+
+        .modal-body {
+
             padding:
-                100px 0
-                80px;
+                30px;
+
         }
-        .final-line {
-            color: var(--text-dim);
+
+
+        .modal-body h2 {
+
+            font-size: 20px;
+
+            margin-bottom: 20px;
+
+            background:
+                var(--gradient);
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+
+        }
+
+
+        .modal-body p {
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            line-height: 2;
+
+        }
+
+
+        /* =====================================================
+           MODAL CONTENT
+        ===================================================== */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 10px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .info-card {
+
+            padding: 16px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 8px;
+
+            background:
+                rgba(255,255,255,0.015);
+
+        }
+
+
+        .info-card strong {
+
+            display: block;
+
+            color: white;
+
+            font-size: 10px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .info-card span {
+
+            color: var(--muted);
+
             font-size: 9px;
-            letter-spacing: 1px;
-            margin-bottom: 18px;
+
+            line-height: 1.7;
+
         }
-        .final-title {
+
+
+        /* =====================================================
+           TECH
+        ===================================================== */
+
+        .tech-list {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 8px;
+
+            margin-top: 20px;
+
+        }
+
+
+        .tech {
+
+            padding:
+                7px 10px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 6px;
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+            background:
+                rgba(255,255,255,0.015);
+
+        }
+
+
+        /* =====================================================
+           ARCADE
+        ===================================================== */
+
+        .arcade {
+
+            position: relative;
+
+            min-height: 270px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    rgba(78,205,196,0.06),
+                    transparent 45%
+                ),
+
+                #07070b;
+
+        }
+
+
+        .arcade::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(78,205,196,0.12) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(155,89,182,0.12) 1px,
+                    transparent 1px
+                );
+
+            background-size:
+                35px 35px;
+
+            opacity: 0.4;
+
+        }
+
+
+        .arcade-content {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .arcade-title {
+
             font-size:
                 clamp(
-                    22px,
-                    5vw,
-                    38px
+                    28px,
+                    7vw,
+                    50px
                 );
+
             font-weight: 700;
+
+            letter-spacing: 3px;
+
             background:
                 var(--gradient);
+
             -webkit-background-clip: text;
             background-clip: text;
+
             color: transparent;
+
         }
-        /* =========================================================
-           FOOTER
-           ========================================================= */
-        footer {
+
+
+        .arcade-subtitle {
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+            margin-top: 10px;
+
+        }
+
+
+        .arcade-button {
+
+            margin-top: 20px;
+
+            display: inline-block;
+
             padding:
-                25px 0
-                35px;
-            text-align: center;
-            color: #3f3f49;
-            font-size: 8px;
+                9px 14px;
+
+            border:
+                1px solid
+                rgba(78,205,196,0.25);
+
+            border-radius: 6px;
+
+            color: var(--cyan);
+
+            text-decoration: none;
+
+            font-size: 9px;
+
+            transition: 0.25s;
+
         }
-        footer .gradient {
+
+
+        .arcade-button:hover {
+
+            color: white;
+
+            border-color:
+                var(--cyan);
+
+            box-shadow:
+                0 0 25px
+                rgba(78,205,196,0.1);
+
+        }
+
+
+        /* =====================================================
+           PROJECTS
+        ===================================================== */
+
+        .projects {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+
+        }
+
+
+        .project {
+
+            padding: 20px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 10px;
+
+            background:
+                var(--card);
+
+            text-decoration: none;
+
+            color: white;
+
+            transition: 0.25s;
+
+        }
+
+
+        .project:hover {
+
+            transform:
+                translateY(-3px);
+
+            border-color:
+                rgba(155,89,182,0.25);
+
+        }
+
+
+        .project-icon {
+
+            font-size: 23px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .project-name {
+
+            font-size: 11px;
+
+        }
+
+
+        .project-description {
+
+            margin-top: 7px;
+
+            color: var(--muted);
+
+            font-size: 9px;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            text-align: center;
+
+            padding:
+                60px 0 30px;
+
+            color: var(--dim);
+
+            font-size: 8px;
+
+        }
+
+
+        footer span {
+
             background:
                 var(--gradient);
+
             -webkit-background-clip: text;
             background-clip: text;
+
             color: transparent;
+
         }
-        /* =========================================================
-           RESPONSIVE
-           ========================================================= */
-        @media (max-width: 760px) {
-            .page {
-                width:
-                    calc(100% - 24px);
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            .nav-links {
+
+                display: none;
+
             }
-            header {
-                min-height:
-                    75vh;
-                padding:
-                    80px 0
-                    50px;
-            }
-            .about-grid {
+
+
+            .windows {
+
                 grid-template-columns:
                     1fr;
+
             }
-            .about-item {
-                border-right: none !important;
-                border-bottom:
-                    1px solid var(--border) !important;
-            }
-            .about-item:last-child {
-                border-bottom: none !important;
-            }
-            .stack {
+
+
+            .projects {
+
                 grid-template-columns:
                     1fr;
+
             }
-            .stats {
+
+
+            .info-grid {
+
                 grid-template-columns:
                     1fr;
+
             }
-            .project {
-                grid-template-columns:
-                    45px 1fr;
-                gap: 10px;
+
+
+            .modal-body {
+
+                padding: 22px;
+
             }
-            .project-description {
-                grid-column:
-                    2;
+
+
+            .modal-window {
+
+                max-height:
+                    90vh;
+
             }
-            section {
-                padding:
-                    55px 0;
-            }
+
         }
-        @media (max-width: 450px) {
-            .logo {
-                font-size: 46px;
-            }
-            .roles {
-                font-size: 9px;
-                line-height: 2;
-            }
-            .description {
-                font-size: 10px;
-            }
-            .arcade {
-                min-height:
-                    300px;
-            }
-        }
+
     </style>
+
 </head>
+
+
 <body>
-    <div class="page">
-        <!-- =====================================================
-             HEADER
-             ===================================================== -->
-        <header>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ===================================================== -->
+
+    <nav>
+
+        <a
+            href="#"
+            class="nav-logo"
+        >
+            <span>GERALTER</span>
+        </a>
+
+
+        <div class="nav-links">
+
+            <button onclick="openModal('about')">
+                ABOUT
+            </button>
+
+            <button onclick="openModal('stack')">
+                STACK
+            </button>
+
+            <button onclick="openModal('arcade')">
+                ARCADE
+            </button>
+
+            <button onclick="openModal('stats')">
+                STATS
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <main class="container">
+
+
+        <!-- =================================================
+             HERO
+        ================================================= -->
+
+        <header class="hero">
+
             <div>
+
                 <div class="terminal">
-                    <span class="prompt">geralter</span>
+
+                    <span class="green">
+                        geralter@github
+                    </span>:~$
+
+                    <span class="purple">
+                        whoami
+                    </span>
+
                 </div>
+
+
                 <h1 class="logo">
                     GERALTER
                 </h1>
-                <div class="roles">
+
+
+                <div class="subtitle">
+
                     DEVELOPER • STUDENT • TECH ENTHUSIAST
+
                 </div>
+
+
                 <p class="description">
+
                     Building things, learning new technologies
                     and exploring the digital world.
+
                 </p>
-                <div class="hero-tags">
-                    <span class="hero-tag">
-                        DEVELOPER
-                    </span>
-                    <span class="hero-tag">
-                        STUDENT
-                    </span>
-                    <span class="hero-tag">
-                        GAMER
-                    </span>
-                    <span class="hero-tag">
-                        CREATOR
-                    </span>
+
+
+                <div class="hero-buttons">
+
+                    <button
+                        class="hero-button"
+                        onclick="openModal('about')"
+                    >
+                        ABOUT ME →
+                    </button>
+
+
+                    <button
+                        class="hero-button"
+                        onclick="openModal('stack')"
+                    >
+                        TECH STACK →
+                    </button>
+
+
+                    <button
+                        class="hero-button"
+                        onclick="openModal('arcade')"
+                    >
+                        NEON-ARCADE →
+                    </button>
+
                 </div>
+
             </div>
+
         </header>
-        <div class="divider"></div>
-        <!-- =====================================================
-             ABOUT ME
-             ===================================================== -->
-        <section id="about">
-            <div class="section-heading">
+
+
+        <!-- =================================================
+             INTERACTIVE WINDOWS
+        ================================================= -->
+
+        <section>
+
+            <div class="section-title">
+
                 <h2>
-                    ▸ ABOUT ME
+                    ▸ DIGITAL SPACE
                 </h2>
-                <span class="section-label">
-                    // PROFILE
+
+                <span>
+                    // SELECT MODULE
                 </span>
+
             </div>
-            <div class="about-grid">
-                <div class="about-item">
-                    <div class="about-icon">
-                        🎓
+
+
+            <div class="windows">
+
+
+                <!-- ABOUT -->
+
+                <button
+                    class="window-button"
+                    onclick="openModal('about')"
+                >
+
+                    <div class="window-icon">
+                        👤
                     </div>
-                    <div class="about-text">
-                        <strong>
-                            EDUCATION
-                        </strong>
-                        Applied Informatics
+
+                    <div class="window-name">
+                        ABOUT ME
                     </div>
-                </div>
-                <div class="about-item">
-                    <div class="about-icon">
-                        💻
+
+                    <div class="window-description">
+                        Who I am, what I study
+                        and what I'm interested in.
                     </div>
-                    <div class="about-text">
-                        <strong>
-                            DEVELOPMENT
-                        </strong>
-                        Programming & software development
+
+                    <div class="window-arrow">
+                        →
                     </div>
-                </div>
-                <div class="about-item">
-                    <div class="about-icon">
+
+                </button>
+
+
+                <!-- STACK -->
+
+                <button
+                    class="window-button"
+                    onclick="openModal('stack')"
+                >
+
+                    <div class="window-icon">
                         ⚙️
                     </div>
-                    <div class="about-text">
-                        <strong>
-                            GAMING TECH
-                        </strong>
-                        Minecraft modding & game technologies
+
+                    <div class="window-name">
+                        TECH STACK
                     </div>
-                </div>
-                <div class="about-item">
-                    <div class="about-icon">
-                        🧠
+
+                    <div class="window-description">
+                        Technologies, programming
+                        languages and tools.
                     </div>
-                    <div class="about-text">
-                        <strong>
-                            LEARNING
-                        </strong>
-                        Improving development skills
+
+                    <div class="window-arrow">
+                        →
                     </div>
-                </div>
-                <div class="about-item">
-                    <div class="about-icon">
-                        🌐
+
+                </button>
+
+
+                <!-- ARCADE -->
+
+                <button
+                    class="window-button"
+                    onclick="openModal('arcade')"
+                >
+
+                    <div class="window-icon">
+                        🕹️
                     </div>
-                    <div class="about-text">
-                        <strong>
-                            EXPLORING
-                        </strong>
-                        New technologies & interesting projects
-                    </div>
-                </div>
-                <div class="about-item">
-                    <div class="about-icon">
-                        ⚡
-                    </div>
-                    <div class="about-text">
-                        <strong>
-                            MINDSET
-                        </strong>
-                        Build • Learn • Experiment
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="divider"></div>
-        <!-- =====================================================
-             TECH STACK
-             ===================================================== -->
-        <section id="stack">
-            <div class="section-heading">
-                <h2>
-                    ▸ TECH STACK
-                </h2>
-                <span class="section-label">
-                    // TECHNOLOGIES
-                </span>
-            </div>
-            <div class="stack">
-                <div class="stack-card">
-                    <div class="stack-title">
-                        // CURRENTLY LEARNING
-                    </div>
-                    <div class="stack-list">
-                        <span class="skill">
-                            HTML5
-                        </span>
-                        <span class="skill">
-                            JavaScript
-                        </span>
-                        <span class="skill">
-                            Web Development
-                        </span>
-                        <span class="skill">
-                            GitHub
-                        </span>
-                    </div>
-                </div>
-                <div class="stack-card">
-                    <div class="stack-title">
-                        // STUDIED
-                    </div>
-                    <div class="stack-list">
-                        <span class="skill">
-                            C++
-                        </span>
-                        <span class="skill">
-                            Programming
-                        </span>
-                        <span class="skill">
-                            Algorithms
-                        </span>
-                    </div>
-                </div>
-                <div class="stack-card">
-                    <div class="stack-title">
-                        // COMING SOON
-                    </div>
-                    <div class="stack-list">
-                        <span class="skill">
-                            Python
-                        </span>
-                        <span class="skill">
-                            JavaScript
-                        </span>
-                        <span class="skill">
-                            Advanced Web
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="divider"></div>
-        <!-- =====================================================
-             NEON ARCADE
-             ===================================================== -->
-        <section id="arcade">
-            <div class="section-heading">
-                <h2>
-                    ▸ NEON-ARCADE
-                </h2>
-                <span class="section-label">
-                    // DIGITAL PLAYGROUND
-                </span>
-            </div>
-            <div class="arcade">
-                <div class="arcade-grid"></div>
-                <div class="arcade-content">
-                    <div class="arcade-mini">
-                        GERALTER // NEON-ARCADE
-                    </div>
-                    <div class="arcade-title">
+
+                    <div class="window-name">
                         NEON-ARCADE
                     </div>
-                    <div class="arcade-status">
-                        <span class="online"></span>
-                        AUTO PLAYING
-                        <span>•</span>
-                        RANDOM PATTERNS
-                        <span>•</span>
-                        NEON ENERGY
+
+                    <div class="window-description">
+                        My experimental neon
+                        browser game project.
                     </div>
-                    <p class="arcade-info">
-                        NEON-ARCADE is an experimental neon
-                        browser game and digital playground.
-                    </p>
-                    <a
-                        class="arcade-button"
-                        href="https://github.com/Gera1ter/Neon-Arcade"
-                        target="_blank"
-                    >
-                        OPEN PROJECT →
-                    </a>
-                </div>
+
+                    <div class="window-arrow">
+                        →
+                    </div>
+
+                </button>
+
+
+                <!-- STATS -->
+
+                <button
+                    class="window-button"
+                    onclick="openModal('stats')"
+                >
+
+                    <div class="window-icon">
+                        📊
+                    </div>
+
+                    <div class="window-name">
+                        GITHUB // STATS
+                    </div>
+
+                    <div class="window-description">
+                        GitHub activity and
+                        development information.
+                    </div>
+
+                    <div class="window-arrow">
+                        →
+                    </div>
+
+                </button>
+
             </div>
+
         </section>
-        <div class="divider"></div>
-        <!-- =====================================================
-             GITHUB STATS
-             ===================================================== -->
-        <section id="stats">
-            <div class="section-heading">
-                <h2>
-                    ▸ GITHUB // STATS
-                </h2>
-                <span class="section-label">
-                    // ACTIVITY
-                </span>
-            </div>
-            <div class="stats">
-                <div class="stat-card">
-                    <div class="stat-title">
-                        CONTRIBUTION ACTIVITY
-                    </div>
-                    <div class="stat-placeholder">
-                        <span>
-                            GITHUB ACTIVITY
-                        </span>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-title">
-                        DEVELOPMENT OVERVIEW
-                    </div>
-                    <div class="stat-placeholder">
-                        <span>
-                            GERALTER // GITHUB
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="divider"></div>
-        <!-- =====================================================
+
+
+        <!-- =================================================
              PROJECTS
-             ===================================================== -->
-        <section id="projects">
-            <div class="section-heading">
+        ================================================= -->
+
+        <section>
+
+            <div class="section-title">
+
                 <h2>
                     ▸ PROJECTS
                 </h2>
-                <span class="section-label">
+
+                <span>
                     // WORKSPACE
                 </span>
+
             </div>
+
+
             <div class="projects">
+
+
                 <a
                     href="https://github.com/Gera1ter/Neon-Arcade"
                     target="_blank"
                     class="project"
                 >
+
                     <div class="project-icon">
                         🕹️
                     </div>
+
                     <div class="project-name">
                         NEON-ARCADE
                     </div>
+
                     <div class="project-description">
-                        Experimental neon browser game
+                        Experimental neon browser game.
                     </div>
+
                 </a>
+
+
                 <a
                     href="https://github.com/Gera1ter/ABC"
                     target="_blank"
                     class="project"
                 >
+
                     <div class="project-icon">
                         📦
                     </div>
+
                     <div class="project-name">
                         ABC
                     </div>
+
                     <div class="project-description">
-                        Small university projects and experiments
+                        University projects and experiments.
                     </div>
+
                 </a>
+
             </div>
+
         </section>
-        <div class="divider"></div>
-        <!-- =====================================================
+
+
+        <!-- =================================================
              FINAL
-             ===================================================== -->
-        <section class="final">
-            <div class="final-line">
+        ================================================= -->
+
+        <section
+            style="
+                text-align:center;
+                padding-bottom:90px;
+            "
+        >
+
+            <div
+                style="
+                    color:var(--dim);
+                    font-size:9px;
+                    margin-bottom:15px;
+                "
+            >
                 DIGITAL WORLD • BUILD • LEARN • EXPLORE
             </div>
-            <div class="final-title">
+
+
+            <div
+                style="
+                    font-size:clamp(23px,5vw,38px);
+                    font-weight:700;
+                    background:var(--gradient);
+                    -webkit-background-clip:text;
+                    background-clip:text;
+                    color:transparent;
+                "
+            >
+
                 KEEP BUILDING.<br>
                 KEEP EXPLORING.
+
             </div>
+
         </section>
-        <!-- =====================================================
-             FOOTER
-             ===================================================== -->
-        <footer>
-            <span class="gradient">
-                GERALTER
-            </span>
-            // DIGITAL SPACE
-            <br><br>
-            © 2026 — Built with code & curiosity.
-        </footer>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         ABOUT MODAL
+    ===================================================== -->
+
+    <div
+        class="modal"
+        id="about"
+        onclick="backgroundClose(event, 'about')"
+    >
+
+        <div class="modal-window">
+
+            <div class="modal-header">
+
+                <div class="modal-title">
+                    GERALTER://ABOUT_ME
+                </div>
+
+                <div class="modal-controls">
+
+                    <button
+                        class="control control-close"
+                        onclick="closeModal('about')"
+                    ></button>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <h2>
+                    ABOUT ME
+                </h2>
+
+
+                <p>
+                    Developer • Student • Tech Enthusiast.
+                    I'm interested in programming, web development,
+                    game technologies and experimenting with
+                    different digital projects.
+                </p>
+
+
+                <div class="info-grid">
+
+                    <div class="info-card">
+
+                        <strong>
+                            🎓 EDUCATION
+                        </strong>
+
+                        <span>
+                            Applied Informatics
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>
+                            💻 DEVELOPMENT
+                        </strong>
+
+                        <span>
+                            Programming & software development
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>
+                            ⚙️ GAMING TECH
+                        </strong>
+
+                        <span>
+                            Minecraft modding & game technologies
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>
+                            🧠 LEARNING
+                        </strong>
+
+                        <span>
+                            Improving development skills
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>
+                            🌐 EXPLORING
+                        </strong>
+
+                        <span>
+                            New technologies & interesting projects
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>
+                            ⚡ MINDSET
+                        </strong>
+
+                        <span>
+                            Build • Learn • Experiment
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
-    <!-- =========================================================
-         SMALL INTERACTION
-         ========================================================= -->
+
+
+    <!-- =====================================================
+         STACK MODAL
+    ===================================================== -->
+
+    <div
+        class="modal"
+        id="stack"
+        onclick="backgroundClose(event, 'stack')"
+    >
+
+        <div class="modal-window">
+
+            <div class="modal-header">
+
+                <div class="modal-title">
+                    GERALTER://TECH_STACK
+                </div>
+
+                <div class="modal-controls">
+
+                    <button
+                        class="control control-close"
+                        onclick="closeModal('stack')"
+                    ></button>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <h2>
+                    TECH STACK
+                </h2>
+
+
+                <p>
+                    Technologies and tools I'm learning,
+                    studying and planning to explore.
+                </p>
+
+
+                <div class="tech-list">
+
+                    <span class="tech">C++</span>
+
+                    <span class="tech">HTML5</span>
+
+                    <span class="tech">CSS</span>
+
+                    <span class="tech">JavaScript</span>
+
+                    <span class="tech">Python</span>
+
+                    <span class="tech">Git</span>
+
+                    <span class="tech">GitHub</span>
+
+                    <span class="tech">VS Code</span>
+
+                    <span class="tech">Minecraft</span>
+
+                    <span class="tech">NeoForge</span>
+
+                    <span class="tech">Create</span>
+
+                    <span class="tech">Mekanism</span>
+
+                    <span class="tech">
+                        Applied Energistics 2
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         ARCADE MODAL
+    ===================================================== -->
+
+    <div
+        class="modal"
+        id="arcade"
+        onclick="backgroundClose(event, 'arcade')"
+    >
+
+        <div class="modal-window">
+
+            <div class="modal-header">
+
+                <div class="modal-title">
+                    GERALTER://NEON_ARCADE
+                </div>
+
+                <div class="modal-controls">
+
+                    <button
+                        class="control control-close"
+                        onclick="closeModal('arcade')"
+                    ></button>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <h2>
+                    NEON-ARCADE
+                </h2>
+
+
+                <div class="arcade">
+
+                    <div class="arcade-content">
+
+                        <div class="arcade-title">
+                            NEON-ARCADE
+                        </div>
+
+                        <div class="arcade-subtitle">
+                            DIGITAL PLAYGROUND
+                        </div>
+
+
+                        <a
+                            href="https://github.com/Gera1ter/Neon-Arcade"
+                            target="_blank"
+                            class="arcade-button"
+                        >
+                            OPEN PROJECT →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         STATS MODAL
+    ===================================================== -->
+
+    <div
+        class="modal"
+        id="stats"
+        onclick="backgroundClose(event, 'stats')"
+    >
+
+        <div class="modal-window">
+
+            <div class="modal-header">
+
+                <div class="modal-title">
+                    GERALTER://GITHUB_STATS
+                </div>
+
+                <div class="modal-controls">
+
+                    <button
+                        class="control control-close"
+                        onclick="closeModal('stats')"
+                    ></button>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-body">
+
+                <h2>
+                    GITHUB // STATS
+                </h2>
+
+
+                <p>
+                    My GitHub workspace and development activity.
+                </p>
+
+
+                <div class="info-grid">
+
+                    <div class="info-card">
+
+                        <strong>
+                            GITHUB
+                        </strong>
+
+                        <span>
+                            github.com/Gera1ter
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <strong>
+                            MAIN PROJECT
+                        </strong>
+
+                        <span>
+                            NEON-ARCADE
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div style="margin-top:25px;">
+
+                    <a
+                        href="https://github.com/Gera1ter"
+                        target="_blank"
+                        class="arcade-button"
+                    >
+                        OPEN GITHUB →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+        <span>
+            GERALTER
+        </span>
+
+        // DIGITAL SPACE
+
+        <br><br>
+
+        © 2026 — Built with code & curiosity.
+
+    </footer>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
     <script>
-        /*
-         * GERALTER // DIGITAL TERMINAL
-         */
+
+        function openModal(id) {
+
+            const modal =
+                document.getElementById(id);
+
+            modal.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        function closeModal(id) {
+
+            const modal =
+                document.getElementById(id);
+
+            modal.classList.remove("active");
+
+            document.body.style.overflow = "";
+
+        }
+
+
+        function backgroundClose(event, id) {
+
+            if (
+                event.target ===
+                event.currentTarget
+            ) {
+
+                closeModal(id);
+
+            }
+
+        }
+
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    document
+                        .querySelectorAll(".modal.active")
+                        .forEach(
+                            modal => {
+
+                                modal.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+                    document.body.style.overflow = "";
+
+                }
+
+            }
+        );
+
+
+        /* Dynamic title */
+
         const titles = [
+
             "GERALTER // DIGITAL WORLD",
+
             "GERALTER // DEVELOPER",
+
             "GERALTER // TECH ENTHUSIAST",
+
             "GERALTER // NEON-ARCADE"
+
         ];
+
+
         let titleIndex = 0;
-        setInterval(() => {
-            titleIndex =
-                (titleIndex + 1)
-                % titles.length;
-            document.title =
-                titles[titleIndex];
-        }, 3500);
+
+
+        setInterval(
+            () => {
+
+                titleIndex =
+                    (
+                        titleIndex + 1
+                    )
+                    % titles.length;
+
+                document.title =
+                    titles[titleIndex];
+
+            },
+            3500
+        );
+
     </script>
+
+
 </body>
+
 </html>
+```
