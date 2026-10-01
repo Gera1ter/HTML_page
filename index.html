@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -11,10 +12,6 @@
 
     <style>
 
-        /* =========================================================
-           RESET
-        ========================================================= */
-
         * {
             margin: 0;
             padding: 0;
@@ -27,19 +24,32 @@
 
         body {
             min-height: 100vh;
+
             background:
-                radial-gradient(circle at 20% 20%, rgba(78, 205, 196, 0.08), transparent 30%),
-                radial-gradient(circle at 80% 70%, rgba(155, 89, 182, 0.08), transparent 30%),
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(78, 205, 196, 0.08),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 80% 70%,
+                    rgba(155, 89, 182, 0.08),
+                    transparent 30%
+                ),
                 #050509;
 
             color: #f4f4f4;
-            font-family: "Courier New", monospace;
+
+            font-family:
+                "Courier New",
+                monospace;
 
             overflow-x: hidden;
         }
 
         body::before {
             content: "";
+
             position: fixed;
             inset: 0;
 
@@ -57,6 +67,7 @@
             background-size: 40px 40px;
 
             pointer-events: none;
+
             z-index: -2;
         }
 
@@ -74,16 +85,15 @@
                 );
 
             pointer-events: none;
+
             z-index: -1;
         }
 
 
-        /* =========================================================
-           COLORS
-        ========================================================= */
-
         :root {
+
             --cyan: #4ECDC4;
+
             --purple: #9B59B6;
 
             --gradient:
@@ -93,17 +103,12 @@
                     #9B59B6
                 );
 
-            --bg: #050509;
-            --panel: rgba(10, 10, 17, 0.94);
-
             --border:
-                rgba(78, 205, 196, 0.35);
+                rgba(78,205,196,0.35);
         }
 
 
-        /* =========================================================
-           SCROLLBAR
-        ========================================================= */
+        /* SCROLLBAR */
 
         ::-webkit-scrollbar {
             width: 8px;
@@ -114,18 +119,17 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(
-                #4ECDC4,
-                #9B59B6
-            );
+            background:
+                linear-gradient(
+                    #4ECDC4,
+                    #9B59B6
+                );
 
             border-radius: 10px;
         }
 
 
-        /* =========================================================
-           SIDE MENU BUTTON
-        ========================================================= */
+        /* MENU BUTTON */
 
         .menu-trigger {
 
@@ -134,18 +138,22 @@
             left: 20px;
             top: 50%;
 
-            transform: translateY(-50%);
+            transform:
+                translateY(-50%);
 
             width: 48px;
             height: 48px;
 
-            border: 1px solid var(--border);
+            border:
+                1px solid var(--border);
 
-            background: rgba(8, 8, 14, 0.9);
+            background:
+                rgba(8,8,14,0.9);
 
             color: var(--cyan);
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
@@ -158,7 +166,8 @@
             transition: 0.25s;
 
             box-shadow:
-                0 0 20px rgba(78,205,196,0.08);
+                0 0 20px
+                rgba(78,205,196,0.08);
         }
 
         .menu-trigger:hover {
@@ -167,18 +176,18 @@
                 translateY(-50%)
                 translateX(4px);
 
-            border-color: var(--cyan);
+            border-color:
+                var(--cyan);
 
             box-shadow:
-                0 0 25px rgba(78,205,196,0.3);
+                0 0 25px
+                rgba(78,205,196,0.3);
 
             color: white;
         }
 
 
-        /* =========================================================
-           NAVIGATOR
-        ========================================================= */
+        /* NAVIGATOR */
 
         .navigator {
 
@@ -193,16 +202,20 @@
             width: 270px;
 
             background:
-                rgba(6, 6, 12, 0.97);
+                rgba(6,6,12,0.97);
 
             border:
-                1px solid rgba(78,205,196,0.4);
+                1px solid
+                rgba(78,205,196,0.4);
 
             box-shadow:
-                0 0 40px rgba(78,205,196,0.12),
-                0 0 80px rgba(155,89,182,0.08);
+                0 0 40px
+                rgba(78,205,196,0.12),
+                0 0 80px
+                rgba(155,89,182,0.08);
 
-            backdrop-filter: blur(18px);
+            backdrop-filter:
+                blur(18px);
 
             z-index: 4999;
 
@@ -213,7 +226,7 @@
         .navigator.active {
 
             transform:
-                translate(0, -50%);
+                translate(0,-50%);
         }
 
         .navigator-header {
@@ -221,7 +234,8 @@
             padding: 14px 16px;
 
             border-bottom:
-                1px solid rgba(255,255,255,0.08);
+                1px solid
+                rgba(255,255,255,0.08);
 
             display: flex;
 
@@ -244,7 +258,6 @@
             font-size: 10px;
 
             color: #777;
-
         }
 
         .navigator-status span {
@@ -256,9 +269,7 @@
         }
 
 
-        /* =========================================================
-           NAV ITEMS
-        ========================================================= */
+        /* NAV ITEMS */
 
         .nav-items {
 
@@ -340,14 +351,13 @@
         }
 
 
-        /* =========================================================
-           NAV FOOTER
-        ========================================================= */
+        /* NAV FOOTER */
 
         .navigator-footer {
 
             border-top:
-                1px solid rgba(255,255,255,0.08);
+                1px solid
+                rgba(255,255,255,0.08);
 
             padding: 12px;
 
@@ -361,13 +371,15 @@
         }
 
 
-        /* =========================================================
-           MAIN
-        ========================================================= */
+        /* MAIN */
 
         main {
 
-            width: min(1100px, calc(100% - 60px));
+            width:
+                min(
+                    1100px,
+                    calc(100% - 60px)
+                );
 
             margin: auto;
 
@@ -376,9 +388,7 @@
         }
 
 
-        /* =========================================================
-           HERO
-        ========================================================= */
+        /* HERO */
 
         .hero {
 
@@ -397,24 +407,17 @@
 
         .terminal {
 
-            font-size: 14px;
+            font-size: 16px;
 
             margin-bottom: 25px;
 
-            color: #777;
-        }
-
-        .terminal .prompt {
-
             color: var(--cyan);
 
+            letter-spacing: 1px;
+
             text-shadow:
-                0 0 10px rgba(78,205,196,0.5);
-        }
-
-        .terminal .command {
-
-            color: #ddd;
+                0 0 10px
+                rgba(78,205,196,0.35);
         }
 
         .hero h1 {
@@ -424,12 +427,15 @@
                 sans-serif;
 
             font-size:
-                clamp(55px, 11vw, 130px);
+                clamp(
+                    55px,
+                    11vw,
+                    130px
+                );
 
             font-weight: 900;
 
-            letter-spacing:
-                8px;
+            letter-spacing: 8px;
 
             background:
                 linear-gradient(
@@ -475,18 +481,18 @@
         }
 
 
-        /* =========================================================
-           HERO BUTTON
-        ========================================================= */
+        /* START BUTTON */
 
         .start-button {
 
             margin-top: 40px;
 
-            padding: 13px 25px;
+            padding:
+                13px 25px;
 
             border:
-                1px solid var(--cyan);
+                1px solid
+                var(--cyan);
 
             background:
                 rgba(78,205,196,0.05);
@@ -510,13 +516,12 @@
             color: white;
 
             box-shadow:
-                0 0 30px rgba(78,205,196,0.2);
+                0 0 30px
+                rgba(78,205,196,0.2);
         }
 
 
-        /* =========================================================
-           DESKTOP
-        ========================================================= */
+        /* DESKTOP */
 
         .desktop {
 
@@ -539,7 +544,7 @@
             display: grid;
 
             grid-template-columns:
-                repeat(4, 1fr);
+                repeat(4,1fr);
 
             gap: 14px;
         }
@@ -549,12 +554,14 @@
             min-height: 145px;
 
             border:
-                1px solid rgba(255,255,255,0.08);
+                1px solid
+                rgba(255,255,255,0.08);
 
             background:
                 rgba(10,10,16,0.65);
 
-            padding: 25px 20px;
+            padding:
+                25px 20px;
 
             cursor: pointer;
 
@@ -610,9 +617,7 @@
         }
 
 
-        /* =========================================================
-           SECTIONS
-        ========================================================= */
+        /* SECTIONS */
 
         .section {
 
@@ -640,16 +645,14 @@
         }
 
 
-        /* =========================================================
-           CARDS
-        ========================================================= */
+        /* CARDS */
 
         .cards {
 
             display: grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(3,1fr);
 
             gap: 12px;
         }
@@ -657,7 +660,8 @@
         .card {
 
             border:
-                1px solid rgba(255,255,255,0.07);
+                1px solid
+                rgba(255,255,255,0.07);
 
             padding: 22px;
 
@@ -688,9 +692,7 @@
         }
 
 
-        /* =========================================================
-           FOOTER
-        ========================================================= */
+        /* FOOTER */
 
         footer {
 
@@ -719,9 +721,7 @@
         }
 
 
-        /* =========================================================
-           MODAL WINDOWS
-        ========================================================= */
+        /* WINDOWS */
 
         .window {
 
@@ -739,7 +739,7 @@
             top: 50%;
 
             transform:
-                translate(-50%, -50%)
+                translate(-50%,-50%)
                 scale(0.92);
 
             opacity: 0;
@@ -750,11 +750,14 @@
                 rgba(7,7,12,0.97);
 
             border:
-                1px solid rgba(78,205,196,0.4);
+                1px solid
+                rgba(78,205,196,0.4);
 
             box-shadow:
-                0 0 50px rgba(0,0,0,0.7),
-                0 0 40px rgba(78,205,196,0.08);
+                0 0 50px
+                rgba(0,0,0,0.7),
+                0 0 40px
+                rgba(78,205,196,0.08);
 
             z-index: 3000;
 
@@ -772,7 +775,7 @@
             pointer-events: auto;
 
             transform:
-                translate(-50%, -50%)
+                translate(-50%,-50%)
                 scale(1);
         }
 
@@ -790,9 +793,7 @@
         }
 
 
-        /* =========================================================
-           WINDOW HEADER
-        ========================================================= */
+        /* WINDOW HEADER */
 
         .window-header {
 
@@ -808,7 +809,8 @@
             gap: 7px;
 
             border-bottom:
-                1px solid rgba(255,255,255,0.08);
+                1px solid
+                rgba(255,255,255,0.08);
 
             background:
                 rgba(255,255,255,0.025);
@@ -867,9 +869,7 @@
         }
 
 
-        /* =========================================================
-           WINDOW CONTENT
-        ========================================================= */
+        /* WINDOW CONTENT */
 
         .window-content {
 
@@ -928,9 +928,7 @@
         }
 
 
-        /* =========================================================
-           WINDOW LIST
-        ========================================================= */
+        /* WINDOW LIST */
 
         .window-list {
 
@@ -949,7 +947,8 @@
                 rgba(255,255,255,0.025);
 
             border-left:
-                2px solid var(--cyan);
+                2px solid
+                var(--cyan);
 
             color: #aaa;
 
@@ -970,9 +969,7 @@
         }
 
 
-        /* =========================================================
-           PROJECT LINKS
-        ========================================================= */
+        /* PROJECT LINKS */
 
         .project-link {
 
@@ -983,7 +980,8 @@
             margin-bottom: 10px;
 
             border:
-                1px solid rgba(255,255,255,0.07);
+                1px solid
+                rgba(255,255,255,0.07);
 
             text-decoration: none;
 
@@ -1013,9 +1011,7 @@
         }
 
 
-        /* =========================================================
-           WINDOW OVERLAY
-        ========================================================= */
+        /* OVERLAY */
 
         .window-overlay {
 
@@ -1047,9 +1043,7 @@
         }
 
 
-        /* =========================================================
-           DOCK
-        ========================================================= */
+        /* DOCK */
 
         .dock {
 
@@ -1073,7 +1067,8 @@
                 rgba(7,7,12,0.9);
 
             border:
-                1px solid rgba(255,255,255,0.08);
+                1px solid
+                rgba(255,255,255,0.08);
 
             backdrop-filter:
                 blur(15px);
@@ -1121,9 +1116,7 @@
         }
 
 
-        /* =========================================================
-           MOBILE
-        ========================================================= */
+        /* MOBILE */
 
         @media (max-width: 800px) {
 
@@ -1138,7 +1131,7 @@
             .desktop-grid {
 
                 grid-template-columns:
-                    repeat(2, 1fr);
+                    repeat(2,1fr);
             }
 
             .cards {
@@ -1183,23 +1176,19 @@
 
             .hero h1 {
 
-                letter-spacing:
-                    3px;
+                letter-spacing: 3px;
             }
 
             .hero-subtitle {
 
-                letter-spacing:
-                    2px;
+                letter-spacing: 2px;
 
-                font-size:
-                    10px;
+                font-size: 10px;
             }
 
             .window-content {
 
-                padding:
-                    20px;
+                padding: 20px;
             }
         }
 
@@ -1213,8 +1202,7 @@
 
             .hero {
 
-                min-height:
-                    70vh;
+                min-height: 70vh;
             }
 
             .dock {
@@ -1222,8 +1210,7 @@
                 max-width:
                     calc(100vw - 20px);
 
-                overflow-x:
-                    auto;
+                overflow-x: auto;
             }
         }
 
@@ -1234,9 +1221,7 @@
 <body>
 
 
-    <!-- =========================================================
-         MENU BUTTON
-    ========================================================== -->
+    <!-- MENU BUTTON -->
 
     <button
         class="menu-trigger"
@@ -1248,9 +1233,7 @@
     </button>
 
 
-    <!-- =========================================================
-         NAVIGATOR
-    ========================================================== -->
+    <!-- NAVIGATOR -->
 
     <aside
         class="navigator"
@@ -1263,7 +1246,9 @@
             </div>
 
             <div class="navigator-status">
+
                 <span>●</span> ONLINE
+
             </div>
 
         </div>
@@ -1343,9 +1328,7 @@
     </aside>
 
 
-    <!-- =========================================================
-         WINDOW OVERLAY
-    ========================================================== -->
+    <!-- OVERLAY -->
 
     <div
         class="window-overlay"
@@ -1354,29 +1337,17 @@
     </div>
 
 
-    <!-- =========================================================
-         MAIN
-    ========================================================== -->
+    <!-- MAIN -->
 
     <main id="home">
 
 
-        <!-- =====================================================
-             HERO
-        ====================================================== -->
+        <!-- HERO -->
 
         <section class="hero">
 
             <div class="terminal">
-
-                <span class="prompt">
-                    geralter
-                </span>
-
-
-                <span class="command">
-                </span>
-
+                geralter
             </div>
 
 
@@ -1411,9 +1382,7 @@
         </section>
 
 
-        <!-- =====================================================
-             DESKTOP
-        ====================================================== -->
+        <!-- DESKTOP -->
 
         <section class="desktop">
 
@@ -1508,9 +1477,7 @@
         </section>
 
 
-        <!-- =====================================================
-             ABOUT
-        ====================================================== -->
+        <!-- ABOUT -->
 
         <section
             class="section"
@@ -1518,7 +1485,7 @@
 
             <div class="section-title">
 
-                ## ▸ ABOUT ME
+                ▸ ABOUT ME
 
                 <span>
                     // PROFILE
@@ -1626,9 +1593,7 @@
         </section>
 
 
-        <!-- =====================================================
-             STACK
-        ====================================================== -->
+        <!-- STACK -->
 
         <section
             class="section"
@@ -1636,7 +1601,7 @@
 
             <div class="section-title">
 
-                ## ▸ TECH STACK
+                ▸ TECH STACK
 
                 <span>
                     // TECHNOLOGIES
@@ -1699,9 +1664,7 @@
         </section>
 
 
-        <!-- =====================================================
-             ARCADE
-        ====================================================== -->
+        <!-- ARCADE -->
 
         <section
             class="section"
@@ -1709,7 +1672,7 @@
 
             <div class="section-title">
 
-                ## ▸ NEON-ARCADE
+                ▸ NEON-ARCADE
 
                 <span>
                     // DIGITAL PLAYGROUND
@@ -1742,9 +1705,7 @@
         </section>
 
 
-        <!-- =====================================================
-             STATS
-        ====================================================== -->
+        <!-- STATS -->
 
         <section
             class="section"
@@ -1752,7 +1713,7 @@
 
             <div class="section-title">
 
-                ## ▸ GITHUB // STATS
+                ▸ GITHUB // STATS
 
                 <span>
                     // ACTIVITY
@@ -1810,9 +1771,7 @@
         </section>
 
 
-        <!-- =====================================================
-             PROJECTS
-        ====================================================== -->
+        <!-- PROJECTS -->
 
         <section
             class="section"
@@ -1820,7 +1779,7 @@
 
             <div class="section-title">
 
-                ## ▸ PROJECTS
+                ▸ PROJECTS
 
                 <span>
                     // WORKSPACE
@@ -1878,9 +1837,7 @@
         </section>
 
 
-        <!-- =====================================================
-             FOOTER
-        ====================================================== -->
+        <!-- FOOTER -->
 
         <footer>
 
@@ -1906,9 +1863,7 @@
     </main>
 
 
-    <!-- =========================================================
-         ABOUT WINDOW
-    ========================================================== -->
+    <!-- ABOUT WINDOW -->
 
     <div
         class="window"
@@ -1917,7 +1872,7 @@
 
         <div
             class="window-header"
-            onmousedown="startDrag(event, this.parentElement)">
+            onmousedown="startDrag(event,this.parentElement)">
 
             <span
                 class="window-dot dot-red"
@@ -1944,7 +1899,7 @@
         <div class="window-content">
 
             <div class="command-line">
-                <span>geralter@github</span>:~$ cat about.txt
+                <span>geralter</span>:~$ cat about.txt
             </div>
 
             <h2>
@@ -1992,9 +1947,7 @@
     </div>
 
 
-    <!-- =========================================================
-         STACK WINDOW
-    ========================================================== -->
+    <!-- STACK WINDOW -->
 
     <div
         class="window"
@@ -2003,7 +1956,7 @@
 
         <div
             class="window-header"
-            onmousedown="startDrag(event, this.parentElement)">
+            onmousedown="startDrag(event,this.parentElement)">
 
             <span
                 class="window-dot dot-red"
@@ -2030,7 +1983,7 @@
         <div class="window-content">
 
             <div class="command-line">
-                <span>geralter@github</span>:~$ ls technologies/
+                <span>geralter</span>:~$ ls technologies/
             </div>
 
             <h2>
@@ -2070,9 +2023,7 @@
     </div>
 
 
-    <!-- =========================================================
-         ARCADE WINDOW
-    ========================================================== -->
+    <!-- ARCADE WINDOW -->
 
     <div
         class="window"
@@ -2081,7 +2032,7 @@
 
         <div
             class="window-header"
-            onmousedown="startDrag(event, this.parentElement)">
+            onmousedown="startDrag(event,this.parentElement)">
 
             <span
                 class="window-dot dot-red"
@@ -2108,7 +2059,7 @@
         <div class="window-content">
 
             <div class="command-line">
-                <span>geralter@github</span>:~$ ./neon-arcade
+                <span>geralter</span>:~$ ./neon-arcade
             </div>
 
             <h2>
@@ -2144,9 +2095,7 @@
     </div>
 
 
-    <!-- =========================================================
-         STATS WINDOW
-    ========================================================== -->
+    <!-- STATS WINDOW -->
 
     <div
         class="window"
@@ -2155,7 +2104,7 @@
 
         <div
             class="window-header"
-            onmousedown="startDrag(event, this.parentElement)">
+            onmousedown="startDrag(event,this.parentElement)">
 
             <span
                 class="window-dot dot-red"
@@ -2182,7 +2131,7 @@
         <div class="window-content">
 
             <div class="command-line">
-                <span>geralter@github</span>:~$ git status
+                <span>geralter</span>:~$ git status
             </div>
 
             <h2>
@@ -2229,9 +2178,7 @@
     </div>
 
 
-    <!-- =========================================================
-         PROJECTS WINDOW
-    ========================================================== -->
+    <!-- PROJECTS WINDOW -->
 
     <div
         class="window"
@@ -2240,7 +2187,7 @@
 
         <div
             class="window-header"
-            onmousedown="startDrag(event, this.parentElement)">
+            onmousedown="startDrag(event,this.parentElement)">
 
             <span
                 class="window-dot dot-red"
@@ -2267,7 +2214,7 @@
         <div class="window-content">
 
             <div class="command-line">
-                <span>geralter@github</span>:~$ ls projects/
+                <span>geralter</span>:~$ ls projects/
             </div>
 
             <h2>
@@ -2319,9 +2266,7 @@
     </div>
 
 
-    <!-- =========================================================
-         DOCK
-    ========================================================== -->
+    <!-- DOCK -->
 
     <div
         class="dock"
@@ -2329,15 +2274,9 @@
     </div>
 
 
-    <!-- =========================================================
-         JAVASCRIPT
-    ========================================================== -->
+    <!-- JAVASCRIPT -->
 
     <script>
-
-        /* =====================================================
-           VARIABLES
-        ====================================================== */
 
         let zIndex = 3001;
 
@@ -2350,43 +2289,52 @@
         let offsetY = 0;
 
 
-        /* =====================================================
-           NAVIGATOR
-        ====================================================== */
+        /* NAVIGATOR */
 
         function toggleNavigator() {
 
             const navigator =
-                document.getElementById("navigator");
+                document.getElementById(
+                    "navigator"
+                );
 
-            navigator.classList.toggle("active");
+            navigator.classList.toggle(
+                "active"
+            );
 
         }
 
 
-        /* =====================================================
-           NAVIGATION
-        ====================================================== */
+        /* NAVIGATION */
 
         function navigateTo(target) {
 
             const navigator =
-                document.getElementById("navigator");
+                document.getElementById(
+                    "navigator"
+                );
 
-            navigator.classList.remove("active");
+            navigator.classList.remove(
+                "active"
+            );
 
 
             document
                 .querySelectorAll(".nav-item")
                 .forEach(item => {
 
-                    item.classList.remove("active");
+                    item.classList.remove(
+                        "active"
+                    );
 
                     if (
-                        item.dataset.target === target
+                        item.dataset.target ===
+                        target
                     ) {
 
-                        item.classList.add("active");
+                        item.classList.add(
+                            "active"
+                        );
 
                     }
 
@@ -2396,11 +2344,15 @@
             if (target === "home") {
 
                 window.scrollTo({
+
                     top: 0,
+
                     behavior: "smooth"
+
                 });
 
                 return;
+
             }
 
 
@@ -2409,9 +2361,7 @@
         }
 
 
-        /* =====================================================
-           OPEN WINDOW
-        ====================================================== */
+        /* OPEN WINDOW */
 
         function openWindow(name) {
 
@@ -2423,9 +2373,12 @@
             if (!windowElement) return;
 
 
-            windowElement.classList.add("open");
+            windowElement.classList.add(
+                "open"
+            );
 
-            windowElement.classList.remove("minimized");
+            windowElement.dataset.minimized =
+                "false";
 
 
             zIndex++;
@@ -2435,8 +2388,12 @@
 
 
             document
-                .getElementById("windowOverlay")
-                .classList.add("active");
+                .getElementById(
+                    "windowOverlay"
+                )
+                .classList.add(
+                    "active"
+                );
 
 
             updateDock();
@@ -2444,9 +2401,7 @@
         }
 
 
-        /* =====================================================
-           CLOSE WINDOW
-        ====================================================== */
+        /* CLOSE */
 
         function closeWindow(name) {
 
@@ -2458,9 +2413,16 @@
             if (!windowElement) return;
 
 
-            windowElement.classList.remove("open");
+            windowElement.classList.remove(
+                "open"
+            );
 
-            windowElement.classList.remove("maximized");
+            windowElement.classList.remove(
+                "maximized"
+            );
+
+            windowElement.dataset.minimized =
+                "false";
 
 
             updateDock();
@@ -2470,30 +2432,37 @@
         }
 
 
-        /* =====================================================
-           CLOSE ALL
-        ====================================================== */
+        /* CLOSE ALL */
 
         function closeAllWindows() {
 
             document
                 .querySelectorAll(".window")
-                .forEach(windowElement => {
+                .forEach(
+                    windowElement => {
 
-                    windowElement.classList.remove(
-                        "open"
-                    );
+                        windowElement.classList.remove(
+                            "open"
+                        );
 
-                    windowElement.classList.remove(
-                        "maximized"
-                    );
+                        windowElement.classList.remove(
+                            "maximized"
+                        );
 
-                });
+                        windowElement.dataset.minimized =
+                            "false";
+
+                    }
+                );
 
 
             document
-                .getElementById("windowOverlay")
-                .classList.remove("active");
+                .getElementById(
+                    "windowOverlay"
+                )
+                .classList.remove(
+                    "active"
+                );
 
 
             updateDock();
@@ -2501,9 +2470,7 @@
         }
 
 
-        /* =====================================================
-           MINIMIZE
-        ====================================================== */
+        /* MINIMIZE */
 
         function minimizeWindow(name) {
 
@@ -2519,7 +2486,6 @@
                 "open"
             );
 
-
             windowElement.dataset.minimized =
                 "true";
 
@@ -2531,9 +2497,7 @@
         }
 
 
-        /* =====================================================
-           MAXIMIZE
-        ====================================================== */
+        /* MAXIMIZE */
 
         function maximizeWindow(name) {
 
@@ -2550,14 +2514,14 @@
             );
 
 
-            bringToFront(windowElement);
+            bringToFront(
+                windowElement
+            );
 
         }
 
 
-        /* =====================================================
-           BRING TO FRONT
-        ====================================================== */
+        /* FRONT */
 
         function bringToFront(element) {
 
@@ -2569,88 +2533,105 @@
         }
 
 
-        /* =====================================================
-           DOCK
-        ====================================================== */
+        /* DOCK */
 
         function updateDock() {
 
             const dock =
-                document.getElementById("dock");
+                document.getElementById(
+                    "dock"
+                );
 
             dock.innerHTML = "";
 
 
             document
                 .querySelectorAll(".window")
-                .forEach(windowElement => {
+                .forEach(
+                    windowElement => {
 
-                    const isOpen =
-                        windowElement.classList.contains(
-                            "open"
-                        );
-
-                    const isMinimized =
-                        windowElement.dataset.minimized ===
-                        "true";
-
-
-                    if (
-                        isOpen ||
-                        isMinimized
-                    ) {
-
-                        const name =
-                            windowElement.dataset.window;
-
-
-                        const button =
-                            document.createElement(
-                                "button"
-                            );
-
-
-                        button.className =
-                            "dock-item";
-
-
-                        button.textContent =
-                            getWindowName(name);
-
-
-                        button.onclick =
-                            () => {
-
-                                windowElement.dataset
-                                    .minimized =
-                                    "false";
-
-                                windowElement.classList
-                                    .add("open");
-
-                                bringToFront(
-                                    windowElement
+                        const isOpen =
+                            windowElement.classList
+                                .contains(
+                                    "open"
                                 );
 
-                                checkOverlay();
+                        const isMinimized =
+                            windowElement.dataset
+                                .minimized ===
+                            "true";
 
-                            };
+
+                        if (
+                            isOpen ||
+                            isMinimized
+                        ) {
+
+                            const name =
+                                windowElement.dataset
+                                    .window;
 
 
-                        dock.appendChild(button);
+                            const button =
+                                document.createElement(
+                                    "button"
+                                );
+
+
+                            button.className =
+                                "dock-item";
+
+
+                            button.textContent =
+                                getWindowName(
+                                    name
+                                );
+
+
+                            button.onclick =
+                                () => {
+
+                                    windowElement.dataset
+                                        .minimized =
+                                        "false";
+
+                                    windowElement.classList
+                                        .add(
+                                            "open"
+                                        );
+
+                                    bringToFront(
+                                        windowElement
+                                    );
+
+                                    checkOverlay();
+
+                                };
+
+
+                            dock.appendChild(
+                                button
+                            );
+
+                        }
 
                     }
+                );
 
-                });
 
+            if (
+                dock.children.length > 0
+            ) {
 
-            if (dock.children.length > 0) {
-
-                dock.classList.add("active");
+                dock.classList.add(
+                    "active"
+                );
 
             } else {
 
-                dock.classList.remove("active");
+                dock.classList.remove(
+                    "active"
+                );
 
             }
 
@@ -2661,15 +2642,20 @@
 
             const names = {
 
-                about: "👤 ABOUT",
+                about:
+                    "👤 ABOUT",
 
-                stack: "⚙️ STACK",
+                stack:
+                    "⚙️ STACK",
 
-                arcade: "🕹️ ARCADE",
+                arcade:
+                    "🕹️ ARCADE",
 
-                stats: "📊 STATS",
+                stats:
+                    "📊 STATS",
 
-                projects: "📦 PROJECTS"
+                projects:
+                    "📦 PROJECTS"
 
             };
 
@@ -2678,9 +2664,7 @@
         }
 
 
-        /* =====================================================
-           OVERLAY
-        ====================================================== */
+        /* OVERLAY */
 
         function checkOverlay() {
 
@@ -2688,6 +2672,7 @@
                 document.querySelector(
                     ".window.open"
                 );
+
 
             const overlay =
                 document.getElementById(
@@ -2712,18 +2697,21 @@
         }
 
 
-        /* =====================================================
-           DRAG WINDOWS
-        ====================================================== */
+        /* DRAG */
 
-        function startDrag(event, element) {
+        function startDrag(
+            event,
+            element
+        ) {
 
             if (
                 event.target.classList.contains(
                     "window-dot"
                 )
             ) {
+
                 return;
+
             }
 
 
@@ -2732,7 +2720,9 @@
                     "maximized"
                 )
             ) {
+
                 return;
+
             }
 
 
@@ -2754,7 +2744,9 @@
                 rect.top;
 
 
-            bringToFront(element);
+            bringToFront(
+                element
+            );
 
 
             document.addEventListener(
@@ -2776,7 +2768,9 @@
                 !dragging ||
                 !dragWindow
             ) {
+
                 return;
+
             }
 
 
@@ -2855,38 +2849,37 @@
         }
 
 
-        /* =====================================================
-           CLICK WINDOW = FRONT
-        ====================================================== */
+        /* WINDOW FRONT */
 
         document
             .querySelectorAll(".window")
-            .forEach(windowElement => {
+            .forEach(
+                windowElement => {
 
-                windowElement.addEventListener(
-                    "mousedown",
-                    () => {
+                    windowElement.addEventListener(
+                        "mousedown",
+                        () => {
 
-                        bringToFront(
-                            windowElement
-                        );
+                            bringToFront(
+                                windowElement
+                            );
 
-                    }
-                );
+                        }
+                    );
 
-            });
+                }
+            );
 
 
-        /* =====================================================
-           ESC CLOSE
-        ====================================================== */
+        /* ESC */
 
         document.addEventListener(
             "keydown",
             event => {
 
                 if (
-                    event.key === "Escape"
+                    event.key ===
+                    "Escape"
                 ) {
 
                     closeAllWindows();
@@ -2897,39 +2890,9 @@
         );
 
 
-        /* =====================================================
-           INITIAL STATE
-        ====================================================== */
+        /* INITIAL */
 
         updateDock();
-
-
-        /* =====================================================
-           TERMINAL CURSOR EFFECT
-        ====================================================== */
-
-        const command =
-            document.querySelector(
-                ".terminal .command"
-            );
-
-
-        let cursorVisible = true;
-
-
-        setInterval(() => {
-
-            cursorVisible =
-                !cursorVisible;
-
-
-            command.style.borderRight =
-                cursorVisible
-                    ? "2px solid #4ECDC4"
-                    : "2px solid transparent";
-
-        }, 500);
-
 
     </script>
 
